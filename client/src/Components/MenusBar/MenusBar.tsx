@@ -5,7 +5,7 @@ import {HiOutlineHashtag} from "react-icons/hi";
 import {CgList, CgProfile} from "react-icons/cg";
 import {FiBell, FiBookmark, FiMail, FiMoreHorizontal} from "react-icons/fi";
 import MenusTab from './MenusTab/MenusTab';
-import { Routes, Route, Link, NavLink  } from "react-router-dom";
+import { Link, NavLink  } from "react-router-dom";
 
 
 
@@ -17,7 +17,8 @@ export default function MenusBar() {
 
 
   return (
-    <div className='flex flex-col h-full w-[12rem] '>
+    <div className='flex flex-col h-full border-r-2 '>
+      
         <GrTwitter className="ml-1 w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
          
          <NavLink to="/" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
@@ -56,6 +57,9 @@ export default function MenusBar() {
         <Link to="/compose/tweet"> 
         <button className=' w-full rounded-3xl bg-blue-500 hover:bg-blue-600 text-2xl text-white h-[2.75rem] mt-3'>Tweet</button>
         </Link>
+        
+
+        
     </div>
   )
 }
