@@ -3,6 +3,7 @@ import MenusBar from './Components/MenusBar/MenusBar';
 import HomePage from './Components/HomePage/HomePage';
 import ExplorePage from './Components/ExplorePage/ExplorePage';
 import { Routes, Route } from 'react-router-dom';
+import TrendingForYouBar from './Components/TrendingForYouBar/TrendingForYouBar';
 
 
 
@@ -15,7 +16,8 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/Explore" element={<ExplorePage />} />
       </Routes>
-      <div className=' border-l-2'>rightside</div>
+      <TrendingForYouBar />
+        
       </div>
     </div>
   )

@@ -17,7 +17,7 @@ export default function MenusBar() {
 
 
   return (
-    <div className='flex flex-col h-full border-r-2 '>
+    <div className='flex flex-col h-full border-r-2 w-1/5'>
       
         <GrTwitter className="ml-1 w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
          
