@@ -17,10 +17,10 @@ export default function MenusBar() {
 
 
   return (
-    <div className='flex flex-col h-full border-r-2 w-1/5 justify-between'>
+    <div className='flex flex-col h-full border-r-2  justify-between'>
       
       <div> 
-        <GrTwitter className="ml-1 w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
+        <GrTwitter className="ml-1 w-[3rem] md:w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
          
          <NavLink to="/" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
         <MenusTab title="Home" icon={BiHomeCircle} />
@@ -56,13 +56,13 @@ export default function MenusBar() {
         </NavLink>
 
         <Link to="/compose/tweet"> 
-        <button className=' w-full rounded-3xl bg-blue-500 hover:bg-blue-600 text-2xl text-white h-[2.75rem] mt-3'>Tweet</button>
+        <button className='hidden md:block w-full rounded-3xl bg-blue-500 hover:bg-blue-600 text-2xl text-white h-[2.75rem] mt-3'>Tweet</button>
         </Link>
         </div>
-        <div className='flex mb-4  cursor-pointer hover:bg-slate-300 rounded-3xl p-[0.5rem] w-[90%] '>
+        <div className='hidden md:flex mb-4  cursor-pointer hover:bg-slate-300 rounded-3xl p-[0.5rem] w-[90%] '>
 
 
-        <div className='  w-12 h-12 rounded-full border border-lighter   text-center '>
+        <div className='     h-12 rounded-full border border-lighter   text-center '>
                 
                 </div>
           <div className='flex flex-col ml-2 '>
