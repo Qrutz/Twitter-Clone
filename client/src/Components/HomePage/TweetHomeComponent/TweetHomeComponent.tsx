@@ -35,7 +35,7 @@ export default function TweetHomeComponent() {
                       <AiOutlineSchedule className='ml-2 cursor-pointer' />
                       </div>
 
-                      <button className=' h-[3rem] w-[6rem] rounded-3xl bg-blue-500 hover:bg-blue-600 text-xl mt-2 text-white mr-3'>Tweet</button>
+                      <button className=' h-[2.5rem] w-[6rem] rounded-3xl bg-blue-500 hover:bg-blue-600 text-xl mt-2 text-white mr-3'>Tweet</button>
                     </div>
 
 

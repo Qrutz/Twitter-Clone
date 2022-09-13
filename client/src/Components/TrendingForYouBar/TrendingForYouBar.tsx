@@ -3,7 +3,7 @@ import TrendingCard from './TrendingCard';
 
 export default function TrendingForYouBar() {
   return (
-    <div className='border-l-2 flex flex-col p-3 w-1/5'>
+    <div className='border-l-2  flex-col p-3 w-1/5 hidden md:flex'>
         
         <form className="flex items-center">   
     <label  className="sr-only">Search</label>

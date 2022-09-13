@@ -39,7 +39,7 @@ export default function PostCardComponent() {
 
         <div className='flex gap-3 items-center'> 
         <FiShare />
-        2
+        
         </div>
         
       </div>
