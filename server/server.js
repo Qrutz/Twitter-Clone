@@ -15,8 +15,12 @@ async function startServer() {
     try {
         await mongoose.connect(MONGO_URI, {
             useNewUrlParser: true,
-            useUnifiedTopology: true,           
+            useUnifiedTopology: true,        
+            
         });
+        console.log('MongoDB connected');    
+
+        
         server.listen(PORT, () => {
             console.log(`Server has been started on port ${PORT}...`);
         });
