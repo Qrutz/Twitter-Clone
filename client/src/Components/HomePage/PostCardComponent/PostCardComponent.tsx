@@ -1,8 +1,23 @@
 import React from 'react'
 import {FiMessageSquare, FiShare} from "react-icons/fi"
 import {AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai"
+import internal from 'stream';
 
-export default function PostCardComponent() {
+
+
+interface Post {
+  text:  string,
+  comments: number;
+  retweets: number;
+  likes: number;
+  date: number;
+
+  
+
+}
+
+
+export default function PostCardComponent(props:Post) {
   return (
     <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
     <div>
@@ -15,30 +30,32 @@ export default function PostCardComponent() {
             <div className="font-semibold group-hover:underline">Name</div>
             <div className="text-gray-500">username</div>
           </a>
-          <div className="text-gray-500">date</div>
+          <div className="text-gray-500">{props.date}</div>
         </div>
         <div className="text-gray-500">
           {/* <DotsHorizontalIcon className="w-4 h-4" /> */}
         </div>
       </div>
-      <div>Tweet text</div>
+      <div>{props.text}</div>
       <div className="flex justify-between mr-3">
         <div className='flex gap-3 items-center'> 
         <FiMessageSquare />
-        2
+        {props.comments}
         </div>
         <div className='flex gap-3 items-center'> 
         <AiOutlineRetweet />
-        2
+        {props.retweets}
         </div>
         
         <div className='flex gap-3 items-center'> 
         <AiOutlineHeart />
-        2
+        {props.likes}
         </div>
 
         <div className='flex gap-3 items-center'> 
         <FiShare />
+
+        
         
         </div>
         

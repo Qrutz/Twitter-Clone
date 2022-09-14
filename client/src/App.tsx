@@ -16,7 +16,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="/Explore" element={<ExplorePage />} />
       </Routes>
-      <TrendingForYouBar />
+      <TrendingForYouBar  />
         
       </div>
     </div>
