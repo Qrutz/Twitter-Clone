@@ -76,31 +76,10 @@ async function logInUser(req, res) {
     }
 }
 
-async function authUser(req, res, next) {
-    const authHeader = req.headers["authorization"];
-    const token = authHeader && authHeader.split(" ")[1];
-    if (!token) {
-        // 401 - unauthorized
-        return res.status(401).json({ message: "No token, authorization denied" });
-    }
-    try {
-        const decoded = jwt.verify(token, "secret");
-        req.user = decoded.user;
-        console.log(req.user);
-        next();
-    } catch (e) {
-        console.log(e);
-        res.status(401).json({ message: "Token is not valid" });
-    }
-
-}
-
-
-
 
 
 module.exports = {
     registerUser,
     logInUser,
-    authUser,
+    
 };

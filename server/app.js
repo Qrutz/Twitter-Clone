@@ -1,6 +1,6 @@
 const express = require('express');
-const { registerUser,logInUser, authUser } = require('./controllers/User/User.controller');
-
+const UserRouter = require('./routes/User.router');
+const {verifyToken} = require('./middleware/auth');
 
 
 
@@ -8,13 +8,12 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/welcome',verifyToken, (req, res) => {
     console.log('Hello World');
     res.send('Hello World');
 });
 
-app.post('/api/register', registerUser);
-app.post('/api/login', logInUser);
+app.use("/api/user", UserRouter);
 
 //craete a middleware function to check if the user is authenticated 
 // app.get('/api/auth', authUser);
