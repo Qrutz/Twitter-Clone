@@ -5,19 +5,16 @@ import {AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai"
 
 
 
-interface Post {
+interface Props {
   text:  string,
   comments: number;
   retweets: number;
   likes: number;
-  date: number;
-
-  
-
+  date: string;
 }
 
 
-export default function PostCardComponent(props:Post) {
+export default function PostCardComponent(props:Props) {
   return (
     <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
     <div>
