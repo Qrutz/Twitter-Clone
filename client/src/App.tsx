@@ -1,7 +1,7 @@
 import React from 'react';
 import MenusBar from './Components/MenusBar/MenusBar';
-import HomePage from './Components/HomePage/HomePage';
-import ExplorePage from './Components/ExplorePage/ExplorePage';
+import HomePage from './pages/HomePage/HomePage';
+import ExplorePage from './pages/ExplorePage/ExplorePage';
 import { Routes, Route } from 'react-router-dom';
 import TrendingForYouBar from './Components/TrendingForYouBar/TrendingForYouBar';
 
