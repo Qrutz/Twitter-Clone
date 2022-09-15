@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export {};
 
 declare global {
@@ -7,5 +9,6 @@ declare global {
         retweets: number,
         likes: number,
         date: string,
+
 }
 }
