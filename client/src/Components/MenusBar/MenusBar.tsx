@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useContext} from 'react';
 import {GrTwitter} from "react-icons/gr";
 import {MdPostAdd} from "react-icons/md";
 import {BiHomeCircle} from "react-icons/bi";
@@ -7,11 +7,14 @@ import {CgList, CgProfile} from "react-icons/cg";
 import {FiBell, FiBookmark, FiMail, FiMoreHorizontal} from "react-icons/fi";
 import MenusTab from './MenusTab/MenusTab';
 import { Link, NavLink  } from "react-router-dom";
+import { CurrentUserContext } from '../../context/userContext';
 
 
 
 
 export default function MenusBar() {
+
+  const {logout} = useContext(CurrentUserContext);
 
 
     
@@ -62,6 +65,7 @@ export default function MenusBar() {
 
         </Link>
         </div>
+        <button onClick={logout}>LOGOUT</button>
         <div className=' md:flex mb-4  cursor-pointer hover:bg-slate-300 rounded-3xl p-[0.5rem] w-[90%] '>
 
 

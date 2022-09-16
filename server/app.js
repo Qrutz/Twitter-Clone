@@ -1,12 +1,16 @@
 const express = require('express');
 const UserRouter = require('./routes/User.router');
 const {verifyToken} = require('./middleware/auth');
+const cors = require('cors');
+
+
 
 
 
 const app = express();
 
 app.use(express.json());
+app.use(cors({origin: 'http://localhost:3000'}));
 
 app.get('/welcome',verifyToken, (req, res) => {
     console.log('Hello World');

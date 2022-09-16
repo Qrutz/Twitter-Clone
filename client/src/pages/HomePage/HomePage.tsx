@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import MenusBar from '../../Components/MenusBar/MenusBar';
 import PostCardComponent from '../../Components/PostCardComponent/PostCardComponent';
+import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
 import TweetHomeComponent from '../../Components/TweetHomeComponent/TweetHomeComponent';
 
 
@@ -41,6 +43,8 @@ export default function HomePage() {
 
 
   return (
+    <>  
+    <MenusBar />
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
       <PostCardComponent text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
@@ -48,6 +52,8 @@ export default function HomePage() {
         return <PostCardComponent text={post.text} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
       })}
     </div>
+    <TrendingForYouBar />
+    </>
 
   )
 

@@ -76,10 +76,24 @@ async function logInUser(req, res) {
     }
 }
 
+async function getMyProfile(req, res) {
+        const username = req.user.user.username;
+    try {
+        let user = await User.findOne({ username });
+        res.json(user);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+
+
 
 
 module.exports = {
     registerUser,
     logInUser,
+    getMyProfile,
     
 };
