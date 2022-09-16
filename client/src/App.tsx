@@ -13,8 +13,7 @@ export default function App() {
 
 
   return (
-    <div className='bg-slate-100 h-screen w-screen     '>
-      <div className='container mx-auto flex h-screen'>
+    
       <Routes> 
         <Route index element={<HomePage />} />
         <Route path="/Explore" element={<ExplorePage />} />
@@ -23,7 +22,6 @@ export default function App() {
       </Routes>
      
         
-      </div>
-    </div>
+     
   )
 }

@@ -43,7 +43,8 @@ export default function HomePage() {
 
 
   return (
-    <>  
+    <div className='bg-slate-100 h-screen w-screen     '>
+      <div className='container mx-auto flex h-screen '>
     <MenusBar />
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
@@ -53,7 +54,8 @@ export default function HomePage() {
       })}
     </div>
     <TrendingForYouBar />
-    </>
+    </div>
+    </div>
 
   )
 
