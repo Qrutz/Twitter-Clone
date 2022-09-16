@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import PostCardComponent from './PostCardComponent/PostCardComponent';
-import TweetHomeComponent from './TweetHomeComponent/TweetHomeComponent';
+import PostCardComponent from '../../Components/PostCardComponent/PostCardComponent';
+import TweetHomeComponent from '../../Components/TweetHomeComponent/TweetHomeComponent';
 
 
 

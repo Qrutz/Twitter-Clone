@@ -11,4 +11,15 @@ declare global {
         date: string,
 
 }
+    interface User {
+        name: string,
+        username: string,
+        avatar: string,
+        bio: string,
+        website: string,
+        following: number,
+        followers: number,
+        joined: string,
+
+}
 }

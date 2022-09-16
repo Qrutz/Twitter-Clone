@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ExplorePage from './pages/ExplorePage/ExplorePage';
 import { Routes, Route } from 'react-router-dom';
 import TrendingForYouBar from './Components/TrendingForYouBar/TrendingForYouBar';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 
 
 
@@ -15,6 +16,7 @@ export default function App() {
       <Routes> 
         <Route index element={<HomePage />} />
         <Route path="/Explore" element={<ExplorePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <TrendingForYouBar  />
         
