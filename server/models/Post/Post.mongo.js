@@ -10,9 +10,23 @@ const PostSchema = new mongoose.Schema({
         required: true,
     },
     likes: {
-        type: mongoose.Types.ObjectId, ref: "User",
-        default: null
+        type: Number,
+        default: 0
+    },
+    comments: {
+        type: Number,
+        default: 0
+    },
+    retweets: {
+        type: Number,
+        default: 0
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
+
+
 });
 
 

@@ -48,7 +48,6 @@ export const CurrentUserProvider = ({children} : ProviderProps) => {
                 }
             })
             .then((res) => {
-                console.log(res.data);
                 setCurrentUser(res.data);
                
             })
