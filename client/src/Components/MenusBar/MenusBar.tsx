@@ -14,8 +14,12 @@ import { CurrentUserContext } from '../../context/userContext';
 
 export default function MenusBar() {
 
-  const {logout} = useContext(CurrentUserContext);
-
+  const {logout, currentUser} = useContext(CurrentUserContext);
+ 
+  const name = currentUser ? currentUser.name : "";
+  const firstname = name.split(" ")[0];
+  const username = currentUser ? currentUser.username : "";
+  const avatar = currentUser ? currentUser.avatar : "";
 
     
 
@@ -66,15 +70,15 @@ export default function MenusBar() {
         </Link>
         </div>
         <button onClick={logout}>LOGOUT</button>
-        <div className=' md:flex mb-4  cursor-pointer hover:bg-slate-300 rounded-3xl p-[0.5rem] w-[90%] '>
+        <div className=' md:flex mb-2  cursor-pointer  hover:bg-slate-300 rounded-3xl p-[0.3rem]  '>
 
 
-        <div className='     h-8 md:h-12 rounded-full border border-lighter   text-center font-extralight '>
-                logo
+        <div className='     md:h-12 rounded-full border border-lighter   text-center font-extralight '>
+                <img className='w-12 h-12 rounded-full' src={avatar} alt="" />
                 </div>
           <div className='flex flex-col ml-2 '>
-            <p className='hidden md:block text-lg font-bold text-gray-800'>Qrutz</p>
-            <span className='hidden md:block text-xs text-gray-600'>@qrutz</span>
+            <p className='hidden md:block text-lg font-bold text-gray-800'>{firstname}</p>
+            <span className='hidden md:block text-xs text-gray-600'>@{username}</span>
           </div>
 
           

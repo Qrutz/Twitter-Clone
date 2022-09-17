@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: "https://cdn-icons-png.flaticon.com/512/1160/1160040.png"
+        default: "https://cdna.artstation.com/p/assets/covers/images/023/309/980/large/derk-elshof-pepe-thumb.jpg?1578792928"
     },
     followers: {   
         type: mongoose.Types.ObjectId, ref: "User",

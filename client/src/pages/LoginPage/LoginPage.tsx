@@ -27,6 +27,7 @@ export default function LoginPage() {
         .then((res) => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);
+            window.location.href = "/";
         }
         )
         .catch((err) => {
@@ -62,7 +63,7 @@ export default function LoginPage() {
         </g>
     </svg>
 
-    <h1 className="text-gray-900 text-2xl md:text-3xl">Log into Tw1tter!</h1>
+    <h1 className="text-gray-900 text-3xl md:text-4xl">Log into Tw1tter!</h1>
     <form onSubmit={handleSubmit}> 
     <input className="w-full p-2 bg-sky-100 rounded-lg mb-[1rem]  border  focus:border-blue-700" placeholder="Email" type="email" value={email} onChange={onChangeEmail} required   />
     <input className="w-full p-2 bg-sky-100 rounded-lg border mb-[1rem]  " placeholder="Password" type="password" value={password} onChange={onChangePassword}   required/>
