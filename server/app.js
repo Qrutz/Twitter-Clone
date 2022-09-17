@@ -1,5 +1,6 @@
 const express = require('express');
 const UserRouter = require('./routes/User.router');
+const PostRouter = require('./routes/Post.router');
 const {verifyToken} = require('./middleware/auth');
 const cors = require('cors');
 
@@ -16,6 +17,8 @@ app.get('/welcome',verifyToken, (req, res) => {
     console.log('Hello World');
     res.send('Hello World');
 });
+
+app.use('/api/post', PostRouter);
 
 app.use("/api/user", UserRouter);
 
