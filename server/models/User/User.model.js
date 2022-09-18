@@ -17,7 +17,6 @@ const user = require("./User.mongo");
 async function saveUser(user) {
     try {
         await user.save();
-        console.log("User saved");
     } catch (e) {
         console.log(e);
     }

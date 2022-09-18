@@ -25,14 +25,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "https://cdna.artstation.com/p/assets/covers/images/023/309/980/large/derk-elshof-pepe-thumb.jpg?1578792928"
     },
-    followers: {   
+    followers: [{   
         type: mongoose.Types.ObjectId, ref: "User",
-        default: null
-    },
-    following: {
+        default: []
+    }],
+    following: [{
         type: mongoose.Types.ObjectId, ref: "User",
-        default:null
-    },
+        default:[]
+    
+    }],
     bio: {
         type: String,
         default: "No bio"

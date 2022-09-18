@@ -102,6 +102,55 @@ async function editMyProfile(req, res) {
     }
 }
 
+async function followUser(req, res) {
+    const username = req.user.user.username;
+    const { usernameToFollow } = req.body;
+    try {
+        let user = await User.findOne({ username });
+        let userToFollow = await User.findOne({ username: usernameToFollow });
+
+        if (user.following.includes(userToFollow._id)) {
+            return res.status(400).json({ errors: [{ msg: "You already follow this user" }] });
+        }
+        user.following.push(userToFollow._id);
+        userToFollow.followers.push(user._id);
+        await saveUser(user);
+        await saveUser(userToFollow);
+        res.status(200).json({ message: "User followed" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+async function unfollowUser(req, res) {
+    const username = req.user.user.username;
+    const { usernameToUnfollow } = req.body;
+    try {
+        let user = await User.findOne({ username });
+        let userToUnfollow = await User.findOne({ username: usernameToUnfollow });
+
+        if (!user.following.includes(userToUnfollow._id)) {
+            return res.status(400).json({ errors: [{ msg: "You don't follow this user" }] });
+        }
+       
+
+        user.following.pull(userToUnfollow._id);
+        userToUnfollow.followers.pull(user._id);
+        await saveUser(user);
+        await saveUser(userToUnfollow);
+        res.status(200).json({ message: "User unfollowed" });
+        
+
+    
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}   
+
+
+
 
 
 
@@ -111,5 +160,8 @@ module.exports = {
     registerUser,
     logInUser,
     getMyProfile,
+    editMyProfile,
+    followUser,
+    unfollowUser,
     
 };
