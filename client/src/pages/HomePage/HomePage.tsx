@@ -53,16 +53,14 @@ export default function HomePage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:5000/api/post/getmyPosts", {
+    axios.get("http://localhost:5000/api/post/getFeed", {
       headers: {
         "x-access-token": `${token}`
-
       }
     })
       .then((res) => {
         console.log(res.data);
         setPostsCopy(res.data);
-        console.log(posts[0].content);
       }
       )
       .catch((err) => {
@@ -82,6 +80,8 @@ export default function HomePage() {
     setValue(e.target.value);
   };
 
+  
+
 
 
   return (
@@ -90,9 +90,9 @@ export default function HomePage() {
     <MenusBar />
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
-      <PostCardComponent text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
+      <PostCardComponent name="name" username='username' text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
       {postsCopy.map((post) => {
-        return <PostCardComponent key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+        return <PostCardComponent name={post.postedBy} username='uname' key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
       })}
     </div>
     <TrendingForYouBar />

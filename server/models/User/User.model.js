@@ -21,10 +21,20 @@ async function saveUser(user) {
         console.log(e);
     }
 }
+async function convertIDtoUsername(id) {
+    try {
+        let user = await user.findOne({ _id: id });
+        let username = user.username;
+        return username;
+    } catch (e) {
+        console.log(e);
+    }
+}
 
 
 
 module.exports = {
     saveUser,
+    convertIDtoUsername,
    
 };

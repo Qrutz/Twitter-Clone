@@ -104,7 +104,7 @@ async function editMyProfile(req, res) {
 
 async function followUser(req, res) {
     const username = req.user.user.username;
-    const { usernameToFollow } = req.body;
+    const usernameToFollow  = req.params.username;
     try {
         let user = await User.findOne({ username });
         let userToFollow = await User.findOne({ username: usernameToFollow });
@@ -125,7 +125,7 @@ async function followUser(req, res) {
 
 async function unfollowUser(req, res) {
     const username = req.user.user.username;
-    const { usernameToUnfollow } = req.body;
+    const  usernameToUnfollow  = req.params.username;
     try {
         let user = await User.findOne({ username });
         let userToUnfollow = await User.findOne({ username: usernameToUnfollow });
@@ -150,6 +150,47 @@ async function unfollowUser(req, res) {
 }   
 
 
+async function getUserProfile(req, res) {
+    const username = req.params.username;
+    try {
+        let user = await User.findOne({ username });
+
+        if (!user) {
+            return res.status(400).json({ errors: [{ msg: "User not found" }] });
+        }
+        //filter out password and email
+        const { password, email, ...userWithoutPassword } = user._doc;
+        res.json(userWithoutPassword);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+async function doIfollowUser(req, res) {
+    const username = req.user.user.username;
+    const  usernameToCheck  = req.params.username;
+    try {
+
+       
+        let user = await User.findOne({ username });
+        let userToCheck = await User.findOne({ username: usernameToCheck });
+
+       
+        
+        if (user.following.includes(userToCheck._id)) {
+            return res.status(200).json({ message: "yes" });
+        }
+        res.status(200).json({ message: "no" });
+    
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+
+
+
 
 
 
@@ -163,5 +204,7 @@ module.exports = {
     editMyProfile,
     followUser,
     unfollowUser,
+    getUserProfile,
+    doIfollowUser
     
 };

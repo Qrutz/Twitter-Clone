@@ -1,6 +1,146 @@
-import React from 'react'
+import React,{useContext, useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
+import { CurrentUserContext } from '../../context/userContext';
+import axios from 'axios';
+
 
 export default function ProfileCard(props:User) {
+    const [myProfile, setMyProfile] = useState(false);
+    const [following, setFollowing] = useState(false);
+    
+
+    const { username } = useParams();
+
+    
+
+    const {currentUser} = useContext(CurrentUserContext);
+
+
+    const token = localStorage.getItem("token");
+
+  
+
+
+
+
+    const uname = currentUser ? currentUser.name : "";
+
+    useEffect(() => {
+        if ((uname === username) || (username === undefined)) {
+            setMyProfile(true);
+        } else {
+            setMyProfile(false);
+        }
+    }, [username, uname])
+
+    useEffect(() => {
+        
+
+        axios.get(`http://localhost:5000/api/user/doIfollowUser/${username}`, 
+            {
+                headers: {  
+                    "x-access-token": `${token}`
+                }
+            })
+            .then((res) => {
+                if (res.data.message === "yes") {
+                    setFollowing(true);
+                } else if (res.data.message === "no") {
+                    setFollowing(false);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [username])
+ 
+
+    async function followUser() {
+        axios.put(`http://localhost:5000/api/user/follow/${username}`, {},
+            {
+                headers: {
+                    "x-access-token": `${token}`
+                }
+            })
+            .then((res) => {
+                console.log(res);
+                setFollowing(true);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    async function unfollowUser() {
+        axios.put(`http://localhost:5000/api/user/unfollow/${username}`, {},
+            {
+                headers: {
+                    "x-access-token": `${token}`
+                }
+            })
+            .then((res) => {
+                console.log(res);
+                setFollowing(false);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+
+
+    const handleOnClick = () => {
+        if (following) {
+            unfollowUser();
+        } else {
+            followUser();
+        }
+    }
+
+
+
+
+   const x = !following ? "Follow" : "Unfollow";
+
+
+    // useEffect(() => {
+    //     console.log(username);
+    //     if (n === username) {
+    //          console.log(username);
+    //          setMyProfile(true);    
+    //     }
+    //     if (n !== username) {   
+    //         setMyProfile(false);
+    //     }
+    //     console.log(myProfile);
+
+    // }, [username, n]);
+
+
+    const showEditButton = () => {
+        if (myProfile) {
+            return (
+                <button className="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded-full max-w-max border bg-transparent font- border-gray-700  hover:border-blue-800  items-center hover:shadow-lg font-semibold py-2 px-4 mr-0 ml-auto">
+                    Edit profile
+                </button>
+            )
+        } else {
+            return (
+                <button onClick={handleOnClick} className="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded-full max-w-max border bg-transparent font- border-gray-700  hover:border-blue-800  items-center hover:shadow-lg font-semibold py-2 px-4 mr-0 ml-auto">
+                    {x}
+                </button>
+
+
+            )
+        }
+    }
+
+        
+
+
+ 
+
+
   return (
     
      
@@ -21,9 +161,7 @@ export default function ProfileCard(props:User) {
             </div>
          
             <div className="flex flex-col text-right">
-                <button className="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded-full max-w-max border bg-transparent font- border-gray-700  hover:border-blue-800  items-center hover:shadow-lg font-semibold py-2 px-4 mr-0 ml-auto">
-                    Edit Profile
-                </button>
+                {showEditButton()}
             </div>
         </div>
 

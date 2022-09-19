@@ -55,7 +55,7 @@ export default function MenusBar() {
         </NavLink>
 
 
-        <NavLink to="/Profile" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"} > 
+        <NavLink to="/me" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"} > 
         <MenusTab title="Profile" icon={CgProfile} />
         </NavLink>
 
