@@ -20,7 +20,7 @@ export default function ProfileCard(props:User) {
 
   
 
-
+   
 
 
     const uname = currentUser ? currentUser.name : "";
@@ -34,7 +34,10 @@ export default function ProfileCard(props:User) {
     }, [username, uname])
 
     useEffect(() => {
-        
+        if (username===undefined) {
+            return;
+        }   
+
 
         axios.get(`http://localhost:5000/api/user/doIfollowUser/${username}`, 
             {
@@ -52,7 +55,7 @@ export default function ProfileCard(props:User) {
             .catch((err) => {
                 console.log(err);
             })
-    }, [username])
+    }, [username, token])
  
 
     async function followUser() {
@@ -101,20 +104,6 @@ export default function ProfileCard(props:User) {
 
 
    const x = !following ? "Follow" : "Unfollow";
-
-
-    // useEffect(() => {
-    //     console.log(username);
-    //     if (n === username) {
-    //          console.log(username);
-    //          setMyProfile(true);    
-    //     }
-    //     if (n !== username) {   
-    //         setMyProfile(false);
-    //     }
-    //     console.log(myProfile);
-
-    // }, [username, n]);
 
 
     const showEditButton = () => {

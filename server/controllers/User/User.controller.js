@@ -188,6 +188,20 @@ async function doIfollowUser(req, res) {
     }
 }
 
+async function convertIDtoUser(req, res) {
+    const userId = req.params.id;
+    try {
+        let user = await User.findOne({ _id: userId });
+        // filter password and email
+        const { password, email, ...userWithoutPassword } = user._doc;
+        res.json(userWithoutPassword);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+
+}
+
 
 
 
@@ -205,6 +219,7 @@ module.exports = {
     followUser,
     unfollowUser,
     getUserProfile,
-    doIfollowUser
+    doIfollowUser,
+    convertIDtoUser,
     
 };

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const PostSchema = new mongoose.Schema({
     content: {
         type: String,
@@ -9,6 +10,7 @@ const PostSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId, ref: "User",
         required: true,
     },
+    
     likes: {
         type: Number,
         default: 0
@@ -23,11 +25,16 @@ const PostSchema = new mongoose.Schema({
     },
     date: {
         type: Date,
-        default: Date.now
+        // format date to be like this: 2021-01-01
+        default: Date.now 
     }
 
 
 });
+
+
+
+
 
 
 module.exports = mongoose.model('Post', PostSchema);

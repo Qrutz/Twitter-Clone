@@ -44,6 +44,13 @@ async function getFeed(req, res) {
         let myPosts = await Post.find({postedBy: user._id});
         posts = posts.concat(myPosts);
 
+        // posts.forEach(async (post) => {
+        //     let username = await convertIDtoUsername(post.postedBy);
+        //     post.postedBy = username;
+        //     console.log(post.postedBy);
+        // });
+        
+
 
 
 

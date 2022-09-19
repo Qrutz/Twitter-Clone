@@ -1,6 +1,7 @@
 const UserRouter = require('express').Router();
-const { registerUser, logInUser, getMyProfile, followUser, unfollowUser, getUserProfile, doIfollowUser  } = require('../controllers/User/User.controller');
+const { registerUser , convertIDtoUser, logInUser, getMyProfile, followUser, unfollowUser, getUserProfile, doIfollowUser  } = require('../controllers/User/User.controller');
 const { verifyToken } = require('../middleware/auth');
+
 
 
 
@@ -11,7 +12,7 @@ UserRouter.put('/follow/:username', verifyToken, followUser);
 UserRouter.put('/unfollow/:username', verifyToken, unfollowUser);
 UserRouter.get("/fetchUser/:username", verifyToken, getUserProfile);
 UserRouter.get("/doIfollowUser/:username", verifyToken, doIfollowUser);
-
+UserRouter.get("/convertIDtoUser/:id", convertIDtoUser);
 
 
 
