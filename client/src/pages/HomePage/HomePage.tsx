@@ -25,7 +25,7 @@ export default function HomePage() {
     e.preventDefault();
     const token = localStorage.getItem("token");
     if  (value === "") return;
-    axios.post("http://localhost:5000/api/post/createPost", {
+    axios.post("api/post/createPost", {
        content: value 
       },
       {
@@ -63,12 +63,13 @@ export default function HomePage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:5000/api/post/getFeed", {
+    axios.get("api/post/getFeed", {
       headers: {
         "x-access-token": `${token}`
       }
     })
       .then((res) => {
+        console.log(res.data);
         
         // setPostsCopy(res.data);
         // convert res.data.postedBy to name
@@ -109,7 +110,7 @@ export default function HomePage() {
 
   
 
-  
+  console.log(postsCopy);
 
 
 
