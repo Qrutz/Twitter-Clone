@@ -13,7 +13,7 @@ export default function UserPage() {
 
     React.useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.get(`http://localhost:5000/api/user/fetchUser/${username}`, {
+        axios.get(`api/user/fetchUser/${username}`, {
             headers: {
                 "x-access-token": `${token}`
             }

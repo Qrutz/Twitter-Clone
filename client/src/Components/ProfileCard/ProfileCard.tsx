@@ -39,7 +39,7 @@ export default function ProfileCard(props:User) {
         }   
 
 
-        axios.get(`http://localhost:5000/api/user/doIfollowUser/${username}`, 
+        axios.get(`api/user/doIfollowUser/${username}`, 
             {
                 headers: {  
                     "x-access-token": `${token}`
@@ -59,7 +59,7 @@ export default function ProfileCard(props:User) {
  
 
     async function followUser() {
-        axios.put(`http://localhost:5000/api/user/follow/${username}`, {},
+        axios.put(`api/user/follow/${username}`, {},
             {
                 headers: {
                     "x-access-token": `${token}`
@@ -75,7 +75,7 @@ export default function ProfileCard(props:User) {
     }
 
     async function unfollowUser() {
-        axios.put(`http://localhost:5000/api/user/unfollow/${username}`, {},
+        axios.put(`api/user/unfollow/${username}`, {},
             {
                 headers: {
                     "x-access-token": `${token}`

@@ -23,7 +23,7 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(email, password);
-        await axios.post("http://localhost:5000/api/user/login", {email, password})
+        await axios.post("api/user/login", {email, password})
         .then((res) => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);

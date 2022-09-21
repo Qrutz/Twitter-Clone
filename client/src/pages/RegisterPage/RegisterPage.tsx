@@ -12,7 +12,7 @@ export default function RegisterPage() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await axios.post("http://localhost:5000/api/user/register", {name, username, email, password})
+        await axios.post("api/user/register", {name, username, email, password})
         .then((res) => {
             console.log(res.data);
             // navigate to login page
