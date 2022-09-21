@@ -2,7 +2,9 @@ const express = require('express');
 const http = require('http');
 const app = require("./app");
 const mongoose = require("mongoose");
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const MONGO_URI = process.env.MONGO_URI;
 
