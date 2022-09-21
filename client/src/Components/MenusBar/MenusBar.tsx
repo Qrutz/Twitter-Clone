@@ -17,7 +17,7 @@ export default function MenusBar() {
   const {logout, currentUser} = useContext(CurrentUserContext);
  
   const name = currentUser ? currentUser.name : "";
-  const firstname = name.split(" ")[0];
+  // const firstname = name.split(" ")[0];
   const username = currentUser ? currentUser.username : "";
   const avatar = currentUser ? currentUser.avatar : "";
 
@@ -77,7 +77,7 @@ export default function MenusBar() {
                 <img className='w-12 h-12 rounded-full' src={avatar} alt="" />
                 </div>
           <div className='flex flex-col ml-2 '>
-            <p className='hidden md:block text-lg font-bold text-gray-800'>{firstname}</p>
+            <p className='hidden md:block text-lg font-bold text-gray-800'>{name ? name : ""}</p>
             <span className='hidden md:block text-xs text-gray-600'>@{username}</span>
           </div>
 

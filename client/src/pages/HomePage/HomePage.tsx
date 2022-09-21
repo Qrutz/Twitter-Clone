@@ -112,6 +112,9 @@ export default function HomePage() {
 
   console.log(postsCopy);
 
+  
+
+
 
 
   return (
@@ -121,7 +124,7 @@ export default function HomePage() {
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
       <PostCardComponent name="name" username='username' text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
-      {postsCopy.map((post) => {
+      {postsCopy.map((post: any) => {
         return <PostCardComponent name={post.postedBy} username='uname' key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
       })}
     </div>
