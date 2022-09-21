@@ -176,6 +176,12 @@ async function doIfollowUser(req, res) {
         let userToCheck = await User.findOne({ username: usernameToCheck });
 
        
+        if (userToCheck == null) {
+            return res.status(400).json({ errors: [{ msg: "User not found" }] });
+        }
+
+
+       
         
         if (user.following.includes(userToCheck._id)) {
             return res.status(200).json({ message: "yes" });
