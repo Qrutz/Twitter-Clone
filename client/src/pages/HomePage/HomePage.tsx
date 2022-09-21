@@ -44,6 +44,7 @@ export default function HomePage() {
       )
       .catch((err) => {
         console.log(err);
+        //sdfasdf
       }
       )
 
