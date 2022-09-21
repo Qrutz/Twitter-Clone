@@ -6,12 +6,15 @@ import {AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai"
 
 
 interface Props {
+  name: string;
+  username: string;
   text:  string,
   comments: number;
   retweets: number;
   likes: number;
   date: string;
 }
+
 
 
 export default function PostCardComponent(props:Props) {
@@ -24,8 +27,8 @@ export default function PostCardComponent(props:Props) {
       <div className="flex justify-between">
         <div className="text-sm flex items-center space-x-2">
           <div className="flex items-center space-x-2 group">
-            <div className="font-semibold group-hover:underline">Name</div>
-            <div className="text-gray-500">username</div>
+            <div className="font-semibold group-hover:underline">{props.name}</div>
+            <div className="text-gray-500">{props.username}</div>
           </div>
           <div className="text-gray-500">{props.date}</div>
         </div>

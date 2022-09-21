@@ -27,6 +27,7 @@ export const CurrentUserContext  = createContext<UserContext>({
     setCurrentUser: () => {},
     checkLogin: () => {},
     logout: () => {},
+    
 });
 
 type ProviderProps = {
