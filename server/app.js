@@ -3,7 +3,7 @@ const UserRouter = require('./routes/User.router');
 const PostRouter = require('./routes/Post.router');
 const {verifyToken} = require('./middleware/auth');
 const cors = require('cors');
-
+const path = require('path');
 
 
 
@@ -11,7 +11,14 @@ const cors = require('cors');
 const app = express();
 
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:3000'}));
+app.use(cors());
+app.use(express.static(path.resolve(__dirname, 'client', 'build')));
+
+app.get('*', function(req, res) {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
+
 
 app.get('/welcome',verifyToken, (req, res) => {
     console.log('Hello World');
