@@ -5,6 +5,7 @@ import ProfilePage from './pages/ProfilePage/ProfilePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import UserPage from './pages/UserPage/UserPage';
+import ClickOnPostPage from './pages/ClickOnPostPage/ClickOnPostPage';
 
 
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
         <Route path='/:username' element={<UserPage />} />
+        <Route path='/:username/status/:id' element={<ClickOnPostPage />} />
         <Route path='*' element={<div>404</div>} />
       </Routes>
       
