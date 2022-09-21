@@ -1,6 +1,7 @@
 import React , {createContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import { AiOutlineConsoleSql } from 'react-icons/ai';
+import { API_URL } from '../requests';
 
 
 
@@ -40,17 +41,14 @@ export const CurrentUserProvider = ({children} : ProviderProps) => {
     
 
     const checkLogin = () => {
-        console.log("checkLogin");
-
         const token = localStorage.getItem("token");
         if (token) {
-            axios.get("api/user/me", {
+            axios.get(`${API_URL}/api/user/me`, {
                 headers: {
                     "x-access-token": `${token}`
                 }
             })
             .then((res) => {
-                console.log(res.data)
                 setCurrentUser(res.data);
                
             })

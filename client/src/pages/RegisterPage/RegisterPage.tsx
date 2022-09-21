@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { API_URL } from '../../requests';
 
 export default function RegisterPage() {
     const [name, setName] = React.useState("");
@@ -12,7 +13,7 @@ export default function RegisterPage() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await axios.post("api/user/register", {name, username, email, password})
+        await axios.post(`${API_URL}/api/user/register`, {name, username, email, password})
         .then((res) => {
             console.log(res.data);
             // navigate to login page

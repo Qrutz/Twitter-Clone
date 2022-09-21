@@ -11,7 +11,8 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run install-client && npm run install-server && npm run build",
     "server": "cd server && npm start",
-    "startAllDev": "npm-run-all --parallel client server",
+    "server-dev": "cd server && npm run dev",
+    "startAllDev": "npm-run-all --parallel client server-dev",
     "start": "npm run server"
   },
   "repository": {

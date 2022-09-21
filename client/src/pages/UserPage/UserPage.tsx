@@ -5,6 +5,7 @@ import ProfileCard from '../../Components/ProfileCard/ProfileCard';
 import MenusBar from '../../Components/MenusBar/MenusBar';
 import PostCardComponent from '../../Components/PostCardComponent/PostCardComponent';
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
+import { API_URL } from '../../requests';
 
 export default function UserPage() {
     const { username } = useParams();
@@ -13,7 +14,7 @@ export default function UserPage() {
 
     React.useEffect(() => {
         const token = localStorage.getItem("token");
-        axios.get(`api/user/fetchUser/${username}`, {
+        axios.get(`${API_URL}/api/user/fetchUser/${username}`, {
             headers: {
                 "x-access-token": `${token}`
             }

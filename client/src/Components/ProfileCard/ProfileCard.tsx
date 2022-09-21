@@ -2,6 +2,7 @@ import React,{useContext, useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/userContext';
 import axios from 'axios';
+import { API_URL } from '../../requests';
 
 
 export default function ProfileCard(props:User) {
@@ -39,7 +40,7 @@ export default function ProfileCard(props:User) {
         }   
 
 
-        axios.get(`api/user/doIfollowUser/${username}`, 
+        axios.get(`${API_URL}/api/user/doIfollowUser/${username}`, 
             {
                 headers: {  
                     "x-access-token": `${token}`
@@ -59,7 +60,7 @@ export default function ProfileCard(props:User) {
  
 
     async function followUser() {
-        axios.put(`api/user/follow/${username}`, {},
+        axios.put(`${API_URL}/api/user/follow/${username}`, {},
             {
                 headers: {
                     "x-access-token": `${token}`
@@ -75,7 +76,7 @@ export default function ProfileCard(props:User) {
     }
 
     async function unfollowUser() {
-        axios.put(`api/user/unfollow/${username}`, {},
+        axios.put(`${API_URL}/api/user/unfollow/${username}`, {},
             {
                 headers: {
                     "x-access-token": `${token}`

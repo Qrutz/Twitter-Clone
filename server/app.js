@@ -27,14 +27,13 @@ app.use('/api/post', PostRouter);
 
 app.use("/api/user", UserRouter);
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-app.get('*', function(req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
 
-//craete a middleware function to check if the user is authenticated 
-// app.get('/api/auth', authUser);
+// UNCOMMENT BEFORE PRODUCTION
+// app.use(express.static(path.resolve(__dirname, '../client/build')));
+// app.get('*', function(req, res) {
+//     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+// });
 
 
 

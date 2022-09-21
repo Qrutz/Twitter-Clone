@@ -4,6 +4,7 @@ import PostCardComponent from '../../Components/PostCardComponent/PostCardCompon
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
 import TweetHomeComponent from '../../Components/TweetHomeComponent/TweetHomeComponent';
 import axios from 'axios';
+import {createPost, API_URL} from "../.././requests"
 
 
 
@@ -23,19 +24,7 @@ export default function HomePage() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-    if  (value === "") return;
-    axios.post("api/post/createPost", {
-       content: value 
-      },
-      {
-        headers: {
-          "x-access-token": `${token}`
-        }
-      }
-   
-
-    )
+     createPost(value)
       .then((res) => {
         console.log(res);
         setValue("");
@@ -47,31 +36,18 @@ export default function HomePage() {
         //sdfasdf
       }
       )
-
-
-
   }
 
-  // async function convertIDtoName(id: string) {
-  //   await axios.get(`http://localhost:5000/api/user/convertIDtoUser/${id}`)
-  //     .then((res) => {
-  //       return res.data.name;
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     })
-  // }
+
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("api/post/getFeed", {
+    axios.get(`${API_URL}/api/post/getFeed`, {
       headers: {
         "x-access-token": `${token}`
       }
     })
       .then((res) => {
-        console.log(res.data);
-        
         // setPostsCopy(res.data);
         // convert res.data.postedBy to name
         // res.data.map((post:any) => {
@@ -108,16 +84,6 @@ export default function HomePage() {
   };
 
  
-
-  
-
-  console.log(postsCopy);
-
-  
-
-
-
-
   return (
     <div className='bg-slate-100      '>
       <div className='container mx-auto flex  '>

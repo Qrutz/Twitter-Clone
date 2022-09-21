@@ -2,6 +2,7 @@ import React from 'react';
 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../requests';
 
 
 
@@ -23,7 +24,7 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log(email, password);
-        await axios.post("api/user/login", {email, password})
+        await axios.post(`${API_URL}/api/user/login`, {email, password})
         .then((res) => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);
