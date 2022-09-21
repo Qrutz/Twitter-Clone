@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && npm start",
+    "install-client": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run install-client && npm run build",
     "server": "cd server && npm start",
     "startAll": "npm-run-all --parallel client server"
   },
