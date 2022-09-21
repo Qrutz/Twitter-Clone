@@ -1,1 +1,1 @@
-web:npm run startAll
+web:npm start

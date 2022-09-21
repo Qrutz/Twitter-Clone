@@ -10,7 +10,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run install-client && npm run build",
     "server": "cd server && npm start",
-    "startAll": "npm-run-all --parallel client server"
+    "start": "npm-run-all --parallel client server"
   },
   "repository": {
     "type": "git",
