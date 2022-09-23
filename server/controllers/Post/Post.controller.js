@@ -80,10 +80,24 @@ async function getFeed(req, res) {
 }
 
 
+async function getUserPosts(req, res) {
+    const username = req.params.username;
+
+    try {
+        let user = await User.findOne({username: username});
+        let posts = await Post.find({postedBy: user._id});
+        res.json(posts);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
 
 
 
-module.exports = { createPost, getMyPosts, getFeed };
+
+
+module.exports = { createPost, getMyPosts, getFeed, getUserPosts };
 
 
 

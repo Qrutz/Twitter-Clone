@@ -5,7 +5,11 @@ import axios from 'axios';
 import { API_URL } from '../../requests';
 
 
-export default function ProfileCard(props:User) {
+
+
+
+
+export default function ProfileCard(props:any) {
     const [myProfile, setMyProfile] = useState(false);
     const [following, setFollowing] = useState(false);
     

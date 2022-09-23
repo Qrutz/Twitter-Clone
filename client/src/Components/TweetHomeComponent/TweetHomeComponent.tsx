@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, {} from 'react';
 import {BsStars, BsEmojiDizzy} from "react-icons/bs";
 import {MdPermMedia} from "react-icons/md"
 import {AiOutlineFileGif, AiOutlineSchedule} from "react-icons/ai"
 import {CgPoll} from "react-icons/cg"
-import {CurrentUserContext, useCurrentUser} from "../../context/CurrentUserContext";
+import { useCurrentUser} from "../../context/CurrentUserContext";
 import { Link } from 'react-router-dom';
 
 

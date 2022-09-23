@@ -6,26 +6,43 @@ import MenusBar from '../../Components/MenusBar/MenusBar';
 import PostCardComponent from '../../Components/PostCardComponent/PostCardComponent';
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
 import { API_URL } from '../../requests';
-import { useQuery } from '@tanstack/react-query';
+import {  useQuery } from '@tanstack/react-query';
 
 export default function UserPage() {
     const { username } = useParams();
     const token = localStorage.getItem("token");
 
-    const { data, isLoading, error } = useQuery(['user', username], () => {
+    const userQuery = useQuery(['user', username], () => {
         return axios.get(`${API_URL}/api/user/fetchUser/${username}`, {
             headers: {
                 "x-access-token": `${token}`
             },
         });
-    } 
+    });
+ 
+    const postsQuery = useQuery(['posts', username], () => {
+        return axios.get(`${API_URL}/api/post/getUserPosts/${username}`, {
+            headers: {
+                "x-access-token": `${token}`
+            },
+        });
+    }); 
+
+
+
+    
+    const userProfile = (userQuery.isLoading) ? <div>Loading...</div> : <ProfileCard name={userQuery.data?.data.name} username={userQuery.data?.data.username} avatar={userQuery.data?.data.avatar} bio={userQuery.data?.data.bio} website={userQuery.data?.data.website} following={userQuery.data?.data.following.length} followers={userQuery.data?.data.followers.length} joined={"December, 2022"} />;
+
+
+    const userTweets = (postsQuery.isLoading) ? <div>Loading...</div> : postsQuery.data?.data.map((post: any) => {
+        return (
+            <PostCardComponent key={post._id} avatar={post.postedByUserData[0].avatar} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+        )
+    }
     );
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    } else if (error) {
-        return <div>Error: :( </div>;
-    } else {
+   
+
 
 
   return (
@@ -33,16 +50,15 @@ export default function UserPage() {
     <div className='container mx-auto flex h-screen '> 
     <MenusBar />
     <div className='flex flex-col bg-slate-100 w-full  '>
-        <ProfileCard name={data?.data.name} username={data?.data.name} avatar={data?.data.avatar} 
-        bio={data?.data.bio} website='www.qrutz123.com' following={(data?.data.following).length} followers={(data?.data.followers).length} joined="December, 2022" />
-        
+        {userProfile}
+        {userTweets}
         {/* fetch users posts */}
         {/* <PostCardComponent name={name} username={uname} text='myPost' comments={9} retweets={0} likes={2} date="2022-01-2" /> */}
     </div>
-    
+    <TrendingForYouBar />
     </div>
     </div>
   )
     }
-}
+
 

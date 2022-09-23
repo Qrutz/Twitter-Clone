@@ -1,6 +1,7 @@
 import React from 'react'
 import {FiMessageSquare, FiShare} from "react-icons/fi"
 import {AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai"
+import { Link } from 'react-router-dom';
 
 
 
@@ -23,7 +24,9 @@ export default function PostCardComponent(props:Props) {
     <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
     <div>
       <div className="bg-slate-200 rounded-full h-12 w-12">
+        <Link to = {`/${props.username}`}>
         <img className="rounded-full" src={props.avatar} alt="profilepci" />
+        </Link>
       </div>
     </div>
     <div className="flex-1 space-y-2">

@@ -25,9 +25,9 @@ export default function MenusBar() {
 
 
   return (
-    <div className='flex flex-col h-[100vh] border-r-2  justify-between md:pr-[2rem] sticky top-0 bottom-0'>
+    <div className='flex flex-col h-[100vh]  border-r-2  justify-between md:pr-[2rem] sticky top-0 bottom-0'>
       
-      <div> 
+      <div className='md:w-[12rem] w-[100%]'> 
         <GrTwitter className="ml-1 w-[3rem] md:w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
          
          <NavLink to="/" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
