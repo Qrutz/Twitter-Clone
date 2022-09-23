@@ -1,68 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import MenusBar from '../../Components/MenusBar/MenusBar';
 import PostCardComponent from '../../Components/PostCardComponent/PostCardComponent';
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
 import TweetHomeComponent from '../../Components/TweetHomeComponent/TweetHomeComponent';
 import axios from 'axios';
-import {createPost, API_URL} from "../.././requests"
+import {API_URL, createPost} from "../.././requests";
+import {  useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
+
 
 
 
 
 export default function HomePage() {
+  const queryClient = useQueryClient();
+  const [value, setValue] = useState<any>("");
+  
+  
+
+  // const [posts, setPosts] = useState(Array<any>);
+  
+  
+
+  const {status, data} = useQuery(['posts'], async () => {
+    const token = localStorage.getItem("token");
+    const res =  await axios.get(`${API_URL}/api/post/getFeed`, {
+      headers: {
+        "x-access-token": `${token}`
+      }
+    })
+    return res.data;
+  },
+  )
+  // refetch the posts when mutation is done
+
+
+
   
 
 
-  const [posts, setPosts] = useState(Array<any>);
 
-  const [postsCopy, setPostsCopy] = useState(posts);
 
-  const [value, setValue] = useState("");
-
+  const addMutation = useMutation((value) => createPost(value), {
+    
+    onSuccess: () => {
+      queryClient.invalidateQueries(['posts'])
+    }
+  })
 
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-     createPost(value)
-      .then((res) => {
-        console.log(res);
+    addMutation.mutate(value, {
+      onSuccess: () => {
         setValue("");
-        setPosts([res.data, ...posts]);
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-        //sdfasdf
-      }
-      )
-  }
-
-
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    axios.get(`${API_URL}/api/post/getFeed`, {
-      headers: {
-        "x-access-token": `${token}`
       }
     })
-      .then((res) => {
-        // setPostsCopy(res.data);
-        // convert res.data.postedBy to name
-        // res.data.map((post:any) => {
-        //   post.postedBy = convertIDtoName(post.postedBy);
-        // })
-        setPostsCopy(res.data);
+  }
 
-      }
-      )
-      .catch((err) => {
-        console.log(err);
-      }
-      )
-  }, [posts])
-  
 
 
         
@@ -84,6 +80,18 @@ export default function HomePage() {
   };
 
  
+  const tweets = (status === 'loading') ? <h1>Loading...</h1> : (status === 'error') ? <span>Error: </span> :  data.map((post: any) => {
+    return (
+     <PostCardComponent name={post.postedBy} username='uname' key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
+    )
+    })
+
+
+
+
+
+
+  
   return (
     <div className='bg-slate-100      '>
       <div className='container mx-auto flex  '>
@@ -91,19 +99,21 @@ export default function HomePage() {
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
       <PostCardComponent name="name" username='username' text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
-      {postsCopy.map((post: any) => {
-        return <PostCardComponent name={post.postedBy} username='uname' key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
-      })}
+     {tweets}
     </div>
     <TrendingForYouBar />
     </div>
     </div>
 
   )
+    }
+  
+  
+  
 
-      }
-      
 
+  
+    
         
 
  

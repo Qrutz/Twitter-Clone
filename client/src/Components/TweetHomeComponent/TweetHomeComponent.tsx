@@ -3,7 +3,7 @@ import {BsStars, BsEmojiDizzy} from "react-icons/bs";
 import {MdPermMedia} from "react-icons/md"
 import {AiOutlineFileGif, AiOutlineSchedule} from "react-icons/ai"
 import {CgPoll} from "react-icons/cg"
-import {CurrentUserContext} from "../../context/userContext";
+import {CurrentUserContext} from "../../context/CurrentUserContext";
 
 
 

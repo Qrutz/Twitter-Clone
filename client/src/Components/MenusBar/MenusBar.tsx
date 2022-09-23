@@ -7,7 +7,7 @@ import {CgList, CgProfile} from "react-icons/cg";
 import {FiBell, FiBookmark, FiMail, FiMoreHorizontal} from "react-icons/fi";
 import MenusTab from './MenusTab/MenusTab';
 import { Link, NavLink  } from "react-router-dom";
-import { CurrentUserContext } from '../../context/userContext';
+import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 
 
