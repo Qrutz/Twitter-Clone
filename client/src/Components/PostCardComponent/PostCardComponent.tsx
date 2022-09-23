@@ -15,12 +15,14 @@ interface Props {
   likes: number;
   date: string;
   avatar: string;
+  postid: string;
 }
 
 
 
 export default function PostCardComponent(props:Props) {
   return (
+  <Link to={`/${props.username}/status/${props.postid}`}>
     <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
     <div>
       <div className="bg-slate-200 rounded-full h-12 w-12">
@@ -68,5 +70,6 @@ export default function PostCardComponent(props:Props) {
       </div>
     </div>
   </div>
+  </Link>
   )
 }

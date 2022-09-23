@@ -26,7 +26,7 @@ export default function ProfilePage() {
 );
     const myTweets = (isLoading) ?  <h1>Loading...</h1> : data?.data.map((post:any) => {
         return (
-            <PostCardComponent avatar={post.postedByUserData[0].avatar} name={name} username={username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+            <PostCardComponent postid={post._id} avatar={post.postedByUserData[0].avatar} name={name} username={username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
         )
     });
 

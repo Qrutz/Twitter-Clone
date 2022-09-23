@@ -52,27 +52,8 @@ async function getFeed(req, res) {
         let posts = await Post.find({postedBy: {$in: following}});
         let myPosts = await Post.find({postedBy: user._id});
         posts = posts.concat(myPosts);
-        // for each post in posts use the method IDtoUser  
-       
-        posts.forEach(post => {
-            post.IDtoUser().then(user => { 
-                // populate postedByUser field with user object 
-               
-                
-                
-                
-
-            });
-        });
-
-
-       
-
-
-
-
-        
-       res.json(posts);
+        posts = posts.reverse();
+        res.json(posts);
     } catch (e) {
         console.log(e);
         res.status(500).json({ message: "Server error" });
@@ -94,10 +75,23 @@ async function getUserPosts(req, res) {
 }
 
 
+async function fetchPost(req, res) {
+    const postId = req.params.postId;
+    try {
+        let post = await Post.findById(postId);
+        res.json(post);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
 
 
 
-module.exports = { createPost, getMyPosts, getFeed, getUserPosts };
+
+
+
+module.exports = { createPost, getMyPosts, getFeed, getUserPosts, fetchPost };
 
 
 
