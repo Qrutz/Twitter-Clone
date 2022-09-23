@@ -19,12 +19,14 @@ export default function ProfilePage() {
         headers: {
             "x-access-token": `${token}`
         },
+
     });
+
 } 
 );
     const myTweets = (isLoading) ?  <h1>Loading...</h1> : data?.data.map((post:any) => {
         return (
-            <PostCardComponent name={name} username={username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+            <PostCardComponent avatar={post.postedByUserData[0].avatar} name={name} username={username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
         )
     });
 
@@ -37,7 +39,7 @@ export default function ProfilePage() {
         bio={bio} website='' following={following.length} followers={followers.length} joined="December, 2022" />
         
         {/* fetch users posts */}
-        <PostCardComponent name={name} username={username} text='myPost' comments={9} retweets={0} likes={2} date="2022-01-2" />
+        
         {myTweets}
                 
     </div>

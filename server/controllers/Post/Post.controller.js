@@ -9,9 +9,18 @@ async function createPost(req, res) {
     try {
         let user = await User.findOne({username: username});
         let postedBy = user._id;
+       
+        
+
         const newPost = new Post({
             content,
-            postedBy: postedBy,   
+            postedBy: postedBy,
+            postedByUserData: {
+                username: user.username,
+                name: user.name,
+                avatar: user.avatar,
+            },
+
         });
 
         await newPost.save();
@@ -43,14 +52,21 @@ async function getFeed(req, res) {
         let posts = await Post.find({postedBy: {$in: following}});
         let myPosts = await Post.find({postedBy: user._id});
         posts = posts.concat(myPosts);
+        // for each post in posts use the method IDtoUser  
+       
+        posts.forEach(post => {
+            post.IDtoUser().then(user => { 
+                // populate postedByUser field with user object 
+               
+                
+                
+                
 
-        // posts.forEach(async (post) => {
-        //     let username = await convertIDtoUsername(post.postedBy);
-        //     post.postedBy = username;
-        //     console.log(post.postedBy);
-        // });
-        
+            });
+        });
 
+
+       
 
 
 

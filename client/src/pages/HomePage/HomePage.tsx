@@ -29,6 +29,7 @@ export default function HomePage() {
         "x-access-token": `${token}`
       }
     })
+    console.log(res.data);
     return res.data;
   },
   )
@@ -82,7 +83,7 @@ export default function HomePage() {
  
   const tweets = (status === 'loading') ? <h1>Loading...</h1> : (status === 'error') ? <span>Error: </span> :  data.map((post: any) => {
     return (
-     <PostCardComponent name={post.postedBy} username='uname' key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
+     <PostCardComponent name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
     )
     })
 
@@ -98,7 +99,6 @@ export default function HomePage() {
     <MenusBar />
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
-      <PostCardComponent name="name" username='username' text="Hello" comments={0} retweets={0} likes={0} date={new Date().toLocaleString()} />
      {tweets}
     </div>
     <TrendingForYouBar />

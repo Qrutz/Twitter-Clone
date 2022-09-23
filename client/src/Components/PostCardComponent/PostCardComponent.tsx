@@ -13,6 +13,7 @@ interface Props {
   retweets: number;
   likes: number;
   date: string;
+  avatar: string;
 }
 
 
@@ -21,7 +22,9 @@ export default function PostCardComponent(props:Props) {
   return (
     <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
     <div>
-      <div className="bg-slate-200 rounded-full h-12 w-12"></div>
+      <div className="bg-slate-200 rounded-full h-12 w-12">
+        <img className="rounded-full" src={props.avatar} alt="profilepci" />
+      </div>
     </div>
     <div className="flex-1 space-y-2">
       <div className="flex justify-between">
