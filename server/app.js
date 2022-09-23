@@ -1,6 +1,7 @@
 const express = require('express');
 const UserRouter = require('./routes/User.router');
 const PostRouter = require('./routes/Post.router');
+const CommentsRouter = require('./routes/Comments.router');
 const {verifyToken} = require('./middleware/auth');
 const cors = require('cors');
 const path = require('path');
@@ -26,6 +27,8 @@ app.get('/welcome',verifyToken, (req, res) => {
 app.use('/api/post', PostRouter);
 
 app.use("/api/user", UserRouter);
+
+app.use("/api/comments", CommentsRouter);
 
 
 

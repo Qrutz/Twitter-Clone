@@ -52,6 +52,25 @@ export const useFetch = (url: string) => {
 };
 
 
+export async function createComment(content:any, postId:any){
+    try {
+        const response = await axios.post(`${API_URL}/api/comments/createComment/${postId}`,{
+            content: content,
+        },
+        {
+            headers: {
+                "x-access-token": `${token}` 
+                }
+                });
+
+        return response.data;
+    } catch (e) {
+        console.log(e);
+    }
+
+}
+
+
     
 
 

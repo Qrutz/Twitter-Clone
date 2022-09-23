@@ -1,5 +1,6 @@
 const Post = require("../../models/Post/Post.mongo");
 const User = require("../../models/User/User.mongo");
+const Comment = require("../../models/Comment/Comment.mongo");
 const {convertIDtoUsername} = require('../../models/User/User.model');
 
 async function createPost(req, res) {
@@ -80,6 +81,17 @@ async function fetchPost(req, res) {
     try {
         let post = await Post.findById(postId);
         res.json(post);
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
+getAllCommentsFromPost = async (req, res) => {
+    const postId = req.params.postId;
+    try {
+        let comments = await Comment.find({postId: postId});
+        res.json(comments);
     } catch (e) {
         console.log(e);
         res.status(500).json({ message: "Server error" });
