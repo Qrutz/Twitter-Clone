@@ -35,12 +35,12 @@ export default function ProfilePage() {
 
     
   return (
-    <div className='bg-slate-100      '>
-    <div className='container mx-auto flex  '> 
+    
+    <div className='container mx-auto flex    '> 
     <MenusBar />
     
-    <div className='flex flex-col bg-slate-100 w-full  '>
-    <div className='flex gap-6  items-center border-b-2 p-3  '>
+    <div className='flex flex-col  w-full '>
+    <div className='flex gap-6  items-center border-b-2 p-3 h-[4rem] bg-white sticky top-0 bottom-0 z-40 '>
           
           <div>        
      <Link to = {'/'}> 
@@ -48,7 +48,7 @@ export default function ProfilePage() {
     </Link>
     </div>
     <div className='flex flex-col '>
-    <h1 className='text-3xl font-semibold'>{name}</h1>
+    <h1 className='text-2xl font-semibold'>{name}</h1>
     <p>{tweetsN} Tweets </p>
     </div>
     </div>
@@ -62,7 +62,7 @@ export default function ProfilePage() {
     </div>
     <TrendingForYouBar />
     </div>
-    </div>
+
   )
 }
 

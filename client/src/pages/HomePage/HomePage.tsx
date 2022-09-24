@@ -97,8 +97,8 @@ export default function HomePage() {
 
   
   return (
-    <div className='bg-slate-100      '>
-      <div className='container mx-auto flex  '>
+    
+      <div className='container mx-auto flex bg-white  '>
     <MenusBar />
     <div className='flex flex-col h-full w-full'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
@@ -106,7 +106,7 @@ export default function HomePage() {
     </div>
     <TrendingForYouBar />
     </div>
-    </div>
+
 
   )
     }

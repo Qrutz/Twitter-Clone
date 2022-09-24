@@ -25,15 +25,23 @@ export default function TweetHomeComponent(props: Props) {
   const user = useCurrentUser();
 
   return (
-    <div className='flex flex-col border-b-2'>
-
-
-        
-    <div className='flex justify-between  items-center border-b-2 p-3  '>
+    <> 
+   
+    <div className='flex justify-between h-[4rem]  items-center border-b-2 p-3 sticky top-0 bottom-0 bg-white z-30 h   '>
+    
     
     <h1 className='text-3xl font-semibold'>Home</h1>
     <BsStars className=' hover:bg-slate-200 rounded-full cursor-pointer text-3xl p-[4px]' />
     </div>
+
+    <div className='flex flex-col border-b-2'>
+  
+
+
+
+
+   
+   
 
    
             <form className='flex p-3 ' onSubmit={props.tweet}>
@@ -45,7 +53,7 @@ export default function TweetHomeComponent(props: Props) {
                 
                 <div className='ml-3 flex-col w-full px-4 relative   '>
                     
-                    <textarea value={props.text} onChange={props.changeText} className='w-full focus:outline-none bg-slate-100' placeholder='Whats happening'></textarea>
+                    <textarea value={props.text} onChange={props.changeText} className='w-full focus:outline-none ' placeholder='Whats happening'></textarea>
 
                     <div className='border-t-2 flex justify-between items-center   '>
                       <div className='flex  w-full  text-2xl p-2'>  
@@ -63,6 +71,7 @@ export default function TweetHomeComponent(props: Props) {
                 </div>
             </form>
     </div>
+    </>
 
   
   )

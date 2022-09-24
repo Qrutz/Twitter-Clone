@@ -113,7 +113,7 @@ export default function ClickOnPostPage() {
 
     
   return (
-    <div className='bg-slate-100'>
+  
       <div className='container mx-auto flex'>
         <MenusBar />
         <div className='flex flex-col h-full w-full' >
@@ -165,16 +165,16 @@ export default function ClickOnPostPage() {
 
         
         <div className='flex justify-around  items-center p-3 border-b'>
-        <FaRegComment className='text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
-        <AiOutlineRetweet className='text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
-        <AiOutlineHeart className='text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
-        <FiShare className='text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
+        <FaRegComment className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
+        <AiOutlineRetweet className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
+        <AiOutlineHeart className='transition  delay-75 hover:text-red-600 duration-300   text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
+        <FiShare className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
 
         </div>
 
         <form onSubmit={handleSubmit}  className='flex p-4 border-b '>
         <img src={user?.avatar} alt="" className='w-12 h-12 rounded-full' />
-        <input value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Tweet your reply' className='font-semibold text-xl  w-full h-12 bg-slate-100   border-gray-300 focus:outline-none focus:border-blue-500 pl-4' />
+        <input value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Tweet your reply' className='font-semibold text-xl  w-full h-12    border-gray-300 focus:outline-none focus:border-blue-500 pl-4' />
 
         <button type='submit' className='bg-blue-500 text-white font-semibold rounded-full px-4 py-2 ml-2 h-[2.5rem] w-[6rem]'>Reply</button>
         
@@ -199,6 +199,6 @@ export default function ClickOnPostPage() {
         </div>
         <TrendingForYouBar />
       </div>
-    </div>
+ 
   )
 }

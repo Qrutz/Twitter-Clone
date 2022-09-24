@@ -46,10 +46,10 @@ export default function UserPage() {
 
 
   return (
-     <div className='bg-slate-100 h-screen w-screen     '>
+    
     <div className='container mx-auto flex h-screen '> 
     <MenusBar />
-    <div className='flex flex-col bg-slate-100 w-full  '>
+    <div className='flex flex-col  w-full  '>
         {userProfile}
         {userTweets}
         {/* fetch users posts */}
@@ -57,7 +57,7 @@ export default function UserPage() {
     </div>
     <TrendingForYouBar />
     </div>
-    </div>
+   
   )
     }
 
