@@ -1,5 +1,6 @@
 // import React, {useState} from 'react';
 
+import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 export const API_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '';
@@ -71,7 +72,46 @@ export async function createComment(content:any, postId:any){
 }
 
 
+
+export async function editUser(name:any, bio:any, avatar:any) {
+    try {
+        const response = await axios.put(`${API_URL}/api/user/settings/edit`,{
+            name: name,
+            bio: bio,
+            avatar: avatar
+        },
+        {
+            headers: {
+                "x-access-token": `${token}` 
+                }
+                });
+
+        return response.data;
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+async function getMyData() {
+    const response = await axios.get(`${API_URL}/api/user/me`, {
+        headers: {
+            "x-access-token": `${token}`
+        }
+    });
+    return response.data;
+}
+
+
+export const useMyData = () => useQuery(["currentUser"], getMyData);
+
+
+
+ // refetch when myData changes
+
+
+
     
+
 
 
 

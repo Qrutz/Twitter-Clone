@@ -4,17 +4,16 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import MenusBar from '../../Components/MenusBar/MenusBar';
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
-import { API_URL, createComment } from '../../requests';
+import { API_URL, createComment, useMyData } from '../../requests';
 import {AiOutlineArrowLeft, AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai";
 import {FiShare} from "react-icons/fi";
 import {FaRegComment} from "react-icons/fa";
-import { useCurrentUser } from '../../context/CurrentUserContext';
 import CommentCard from './CommentCard';
 
 
 export default function ClickOnPostPage() {
    const {id} = useParams();
-   const user = useCurrentUser();
+   const user = useMyData();
    const [value, setValue] = React.useState("");
 
    const TweetQuery = useQuery(['post', id], async () => {
@@ -132,7 +131,9 @@ export default function ClickOnPostPage() {
 
         <div className='flex flex-col gap-4 p-3 border-b '>
         <div className='flex gap-4 items-center'> 
+        <Link to={`/${TweetQuery.data.postedByUserData[0].username}`}>
         <img src={TweetQuery.data.postedByUserData[0].avatar} alt="" className='w-12 h-12 rounded-full' />
+        </Link>
         <div className='flex flex-col'>
         <h1 className='font-semibold text-lg'>{TweetQuery.data.postedByUserData[0].name}</h1>
         <h1 className='text-gray-500 text-sm'>@{TweetQuery.data.postedByUserData[0].username}</h1>
@@ -173,7 +174,7 @@ export default function ClickOnPostPage() {
         </div>
 
         <form onSubmit={handleSubmit}  className='flex p-4 border-b '>
-        <img src={user?.avatar} alt="" className='w-12 h-12 rounded-full' />
+        <img src={user?.data.avatar} alt="" className='w-12 h-12 rounded-full' />
         <input value={value} onChange={(e) => setValue(e.target.value)} type="text" placeholder='Tweet your reply' className='font-semibold text-xl  w-full h-12    border-gray-300 focus:outline-none focus:border-blue-500 pl-4' />
 
         <button type='submit' className='bg-blue-500 text-white font-semibold rounded-full px-4 py-2 ml-2 h-[2.5rem] w-[6rem]'>Reply</button>
@@ -202,3 +203,5 @@ export default function ClickOnPostPage() {
  
   )
 }
+
+

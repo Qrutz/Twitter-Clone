@@ -1,4 +1,3 @@
-import React, { useContext} from 'react';
 import {GrTwitter} from "react-icons/gr";
 import {MdPostAdd} from "react-icons/md";
 import {BiHomeCircle} from "react-icons/bi";
@@ -7,19 +6,19 @@ import {CgList, CgProfile} from "react-icons/cg";
 import {FiBell, FiBookmark, FiMail, FiMoreHorizontal} from "react-icons/fi";
 import MenusTab from './MenusTab/MenusTab';
 import { Link, NavLink  } from "react-router-dom";
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { useMyData } from '../../requests';
 
 
 
 
 export default function MenusBar() {
 
-  const {logout, currentUser} = useContext(CurrentUserContext);
  
-  const name = currentUser ? currentUser.name : "";
-  // const firstname = name.split(" ")[0];
-  const username = currentUser ? currentUser.username : "";
-  const avatar = currentUser ? currentUser.avatar : "";
+  const {data, isLoading} = useMyData();
+
+  const name = isLoading ? "loading" : data?.name;
+  const username = isLoading ? "loading" : data?.username;
+  const avatar = isLoading ? "loading" : data?.avatar;
 
     
 
@@ -69,7 +68,7 @@ export default function MenusBar() {
 
         </Link>
         </div>
-        <button onClick={logout}>LOGOUT</button>
+       
         <div className=' md:flex mb-2  cursor-pointer  hover:bg-slate-300 rounded-3xl p-[0.3rem]  '>
 
 

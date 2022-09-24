@@ -1,10 +1,9 @@
-import React, {} from 'react';
+
 import {BsStars, BsEmojiDizzy} from "react-icons/bs";
 import {MdPermMedia} from "react-icons/md"
 import {AiOutlineFileGif, AiOutlineSchedule} from "react-icons/ai"
 import {CgPoll} from "react-icons/cg"
-import { useCurrentUser} from "../../context/CurrentUserContext";
-import { Link } from 'react-router-dom';
+import { useMyData } from '../../requests';
 
 
 
@@ -22,7 +21,9 @@ interface Props {
 }
 
 export default function TweetHomeComponent(props: Props) {
-  const user = useCurrentUser();
+  const user = useMyData();
+
+  const avar = user.isLoading ? "" : user.data.avatar;
 
   return (
     <> 
@@ -45,11 +46,11 @@ export default function TweetHomeComponent(props: Props) {
 
    
             <form className='flex p-3 ' onSubmit={props.tweet}>
-                <div className='  w-12 h-12 rounded-full  text-center '>
-                  <Link to={`/me`}>
-                  <img className='rounded-full' src={user?.avatar} alt="profilepci" />
-                  </Link>
-                </div>
+               
+               <div className='md:h-12 rounded-full    text-center font-extralight'> 
+                  <img className='rounded-full  w-12 h-12 ' src={avar} alt="profilepci" />
+                  </div>
+                
                 
                 <div className='ml-3 flex-col w-full px-4 relative   '>
                     

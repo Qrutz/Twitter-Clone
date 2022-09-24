@@ -47,7 +47,7 @@ export default function UserPage() {
 
   return (
     
-    <div className='container mx-auto flex h-screen '> 
+    <div className='container mx-auto flex  '> 
     <MenusBar />
     <div className='flex flex-col  w-full  '>
         {userProfile}

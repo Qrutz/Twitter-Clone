@@ -39,6 +39,8 @@ async function getMyPosts(req, res) {
         let user = await User.findOne({username: username});
         let postedBy = user._id;
         let posts = await Post.find({postedBy: postedBy});
+
+        posts.reverse();
         res.json(posts);
     } catch (e) {
         console.log(e); 
@@ -68,6 +70,7 @@ async function getUserPosts(req, res) {
     try {
         let user = await User.findOne({username: username});
         let posts = await Post.find({postedBy: user._id});
+        posts.reverse();
         res.json(posts);
     } catch (e) {
         console.log(e);

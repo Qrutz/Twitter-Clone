@@ -89,11 +89,13 @@ async function getMyProfile(req, res) {
 
 async function editMyProfile(req, res) {
     const username = req.user.user.username;
-    const { name, bio } = req.body;
+    const { name, bio, avatar } = req.body;
+
     try {
         let user = await User.findOne({ username });
         user.name = name;
         user.bio = bio;
+        user.avatar = avatar;
         await saveUser(user);
         res.status(200).json({ message: "User updated" });
     } catch (e) {

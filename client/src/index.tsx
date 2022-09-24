@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { CurrentUserProvider } from './context/CurrentUserContext';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const root = ReactDOM.createRoot(
@@ -14,9 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={new QueryClient()}>
-      <CurrentUserProvider>
     <App />
-    </CurrentUserProvider>
     </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>

@@ -9,14 +9,12 @@ import ClickOnPostPage from './pages/ClickOnPostPage/ClickOnPostPage';
 
 
 
+
+
+
 export default function App() {
 
-  
-
-    
-
-    
-
+   
 
   return (
     

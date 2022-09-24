@@ -1,8 +1,7 @@
-import React,{useContext, useEffect, useState} from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { CurrentUserContext } from '../../context/CurrentUserContext';
+import React,{useEffect, useState} from 'react';
+import {  useParams } from 'react-router-dom';
 import axios from 'axios';
-import { API_URL } from '../../requests';
+import { API_URL, useMyData } from '../../requests';
 
 
 
@@ -12,13 +11,15 @@ import { API_URL } from '../../requests';
 export default function ProfileCard(props:any) {
     const [myProfile, setMyProfile] = useState(false);
     const [following, setFollowing] = useState(false);
+
+    const {data, isLoading} = useMyData();
     
 
     const { username } = useParams();
 
     
 
-    const {currentUser} = useContext(CurrentUserContext);
+    
 
 
     const token = localStorage.getItem("token");
@@ -28,7 +29,7 @@ export default function ProfileCard(props:any) {
    
 
 
-    const uname = currentUser ? currentUser.name : "";
+    const uname = isLoading ? "" : data.username;
 
     useEffect(() => {
         if ((uname === username) || (username === undefined)) {

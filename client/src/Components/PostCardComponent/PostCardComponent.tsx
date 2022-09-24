@@ -23,11 +23,11 @@ interface Props {
 export default function PostCardComponent(props:Props) {
   return (
   <Link to={`/${props.username}/status/${props.postid}`}>
-    <div className="hover:bg-gray-200 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
-    <div>
-      <div className="bg-slate-200 rounded-full h-12 w-12">
+    <div className="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
+    <div className='md:flex mb-2  cursor-pointer   rounded-3xl p-[0.3rem] '>
+      <div className=" md:h-12 rounded-full border border-lighter   text-center font-extralight">
         <Link to = {`/${props.username}`}>
-        <img className="rounded-full" src={props.avatar} alt="profilepci" />
+        <img className="rounded-full w-12 h-12  " src={props.avatar} alt="profilepci" />
         </Link>
       </div>
     </div>
