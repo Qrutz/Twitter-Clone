@@ -7,11 +7,6 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import UserPage from './pages/UserPage/UserPage';
 import ClickOnPostPage from './pages/ClickOnPostPage/ClickOnPostPage';
 
-import { useQuery, useQueryClient,  } from '@tanstack/react-query';
-import axios from 'axios';
-
-
-
 
 
 export default function App() {

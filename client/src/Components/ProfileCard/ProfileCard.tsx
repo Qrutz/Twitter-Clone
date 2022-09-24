@@ -1,5 +1,5 @@
 import React,{useContext, useEffect, useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import axios from 'axios';
 import { API_URL } from '../../requests';
@@ -114,7 +114,7 @@ export default function ProfileCard(props:any) {
     const showEditButton = () => {
         if (myProfile) {
             return (
-                <button className="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded-full max-w-max border bg-transparent font- border-gray-700  hover:border-blue-800  items-center hover:shadow-lg font-semibold py-2 px-4 mr-0 ml-auto">
+                <button onClick={props.handleOnEdit}  className="flex justify-center  max-h-max whitespace-nowrap focus:outline-none  focus:ring  rounded-full max-w-max border bg-transparent font- border-gray-700  hover:border-blue-800  items-center hover:shadow-lg font-semibold py-2 px-4 mr-0 ml-auto">
                     Edit profile
                 </button>
             )
@@ -148,7 +148,7 @@ export default function ProfileCard(props:any) {
             <div className="flex flex-1">
                 <div className='mt-[-6rem]'>
                     <div  className="md rounded-full relative avatar h-[9rem] w-[9rem]">
-                        <img  className="h-[9rem] w-[9rem] md rounded-full relative border-4 border-gray-900" src={props.avatar} alt="" />
+                        <img  className="h-[9rem] w-[9rem] md rounded-full relative border-4" src={props.avatar} alt="" />
                         <div className="absolute"></div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ import axios from 'axios'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import React from 'react'
+import EditProfileModal from './EditProfileModal'
 
 export default function ProfilePage() {
    
@@ -16,6 +17,7 @@ export default function ProfilePage() {
 
    const {name, username, bio, avatar, following, followers} = useCurrentUser();
    const [tweetsN, setTweetsN] = React.useState(0);
+   const [toggle, setToggle] = React.useState(false);
 
    const { data, isLoading } = useQuery(['user'], () => {
     const token = localStorage.getItem("token");
@@ -34,12 +36,18 @@ export default function ProfilePage() {
     });
 
     
-  return (
+
     
-    <div className='container mx-auto flex    '> 
+  return (
+    <>
+   {toggle? <EditProfileModal avatar={avatar} name={name} bio={bio} handleExit={() => setToggle(false)} /> : null}
+    <div className={toggle ?  'container mx-auto flex opacity-50 pointer-events-none  ' : 'container mx-auto flex '  }> 
+
+    
+    
     <MenusBar />
     
-    <div className='flex flex-col  w-full '>
+    <div className='flex flex-col  w-full scroll-smooth '>
     <div className='flex gap-6  items-center border-b-2 p-3 h-[4rem] bg-white sticky top-0 bottom-0 z-40 '>
           
           <div>        
@@ -52,16 +60,21 @@ export default function ProfilePage() {
     <p>{tweetsN} Tweets </p>
     </div>
     </div>
-        <ProfileCard name={name} username={username} avatar={avatar} 
+  
+        <ProfileCard handleOnEdit={() => setToggle(!toggle)} name={name} username={username} avatar={avatar} 
         bio={bio} website='' following={following.length} followers={followers.length} joined="December, 2022" />
+           
+        
         
         {/* fetch users posts */}
+        
         
         {myTweets}
                 
     </div>
     <TrendingForYouBar />
     </div>
+    </>
 
   )
 }

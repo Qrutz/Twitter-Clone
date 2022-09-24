@@ -34,23 +34,23 @@ export default function MenusBar() {
         <MenusTab title="Home" icon={BiHomeCircle} />
         </NavLink> 
         
-        <NavLink to="/Explore" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}  > 
+        <NavLink to="/Explore/Explore" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}  > 
         <MenusTab  title="Explore" icon={HiOutlineHashtag} />
         </NavLink>
 
-        <NavLink to="/Notifications" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
+        <NavLink to="/Notifications/Notifications" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
         <MenusTab title="Notifications" icon={FiBell} />
         </NavLink>
 
-        <NavLink to="/Messages" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
+        <NavLink to="/Messages/messages" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
         <MenusTab title="Messages" icon={FiMail} />
         </NavLink>
 
-        <NavLink to="/Bookmarks" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}> 
+        <NavLink to="/Bookmarks/bookmarks" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}> 
         <MenusTab title="Bookmarks" icon={FiBookmark} />
         </NavLink> 
 
-        <NavLink to="/Lists" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>   
+        <NavLink to="/Lists/l" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>   
         <MenusTab title="Lists" icon={CgList} />
         </NavLink>
 
@@ -59,7 +59,7 @@ export default function MenusBar() {
         <MenusTab title="Profile" icon={CgProfile} />
         </NavLink>
 
-        <NavLink to="/More" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>   
+        <NavLink to="/More/m" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>   
         <MenusTab title="More" icon={FiMoreHorizontal} />
         </NavLink>
 
