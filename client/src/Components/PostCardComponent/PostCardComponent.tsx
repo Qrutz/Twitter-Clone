@@ -21,6 +21,16 @@ interface Props {
 
 
 export default function PostCardComponent(props:Props) {
+    // format date function 
+    const formatDate = (date: string) => {
+      const d = new Date(date);
+      const year = d.getFullYear();
+      const month = d.getMonth() + 1;
+      const dt = d.getDate();
+      return `${dt}/${month}/${year}`;
+    }
+
+    
   return (
   <Link to={`/${props.username}/status/${props.postid}`}>
     <div className="hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer flex items-start px-3 py-2 space-x-4 border-b-2">
@@ -38,7 +48,7 @@ export default function PostCardComponent(props:Props) {
             <div className="font-semibold group-hover:underline">{props.name}</div>
             <div className="text-gray-500">{props.username}</div>
           </div>
-          <div className="text-gray-500">{props.date}</div>
+          <div className="text-gray-500">{formatDate(props.date)  }</div>
         </div>
         <div className="text-gray-500">
           {/* <DotsHorizontalIcon className="w-4 h-4" /> */}

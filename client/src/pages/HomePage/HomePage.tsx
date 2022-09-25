@@ -65,18 +65,6 @@ export default function HomePage() {
 
 
 
-        
-  // format date function 
-  const formatDate = (date: string) => {
-    const d = new Date(date);
-    const year = d.getFullYear();
-    const month = d.getMonth() + 1;
-    const dt = d.getDate();
-    return `${dt}/${month}/${year}`;
-  }
-
-
-
 
 
  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +74,7 @@ export default function HomePage() {
  
   const tweets = (status === 'loading') ? <h1>Loading...</h1> : (status === 'error') ? <span>Error: </span> :  data.map((post: any) => {
     return (
-     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={formatDate(post.date)} />
+     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
     )
     })
 
