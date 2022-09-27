@@ -25,7 +25,7 @@ export default function SearchUsersComponent() {
 
         {data.map((user: any) => {
           return (
-            <div key={user._uid} className='border-b hover:bg-gray-200 cursor-pointer p-2'>
+            <div key={user._id} className='border-b hover:bg-gray-200 cursor-pointer p-2'>
             <Link to={`/${user.username}`} >
         
             <div className="flex mx-2   ">

@@ -76,7 +76,7 @@ export default function HomePage() {
  
   const tweets = (status === 'loading') ? <h1>Loading...</h1> : (status === 'error') ? <span>Error: </span> :  data.map((post: any) => {
     return (
-     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
+     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
     )
     })
 

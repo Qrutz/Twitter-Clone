@@ -1,5 +1,6 @@
 const Comment = require('../../models/Comment/Comment.mongo');
 const User = require('../../models/User/User.mongo');
+const Post = require('../../models/Post/Post.mongo');
 
 async function createComment(req, res) {
     
@@ -9,6 +10,7 @@ async function createComment(req, res) {
     
     try {
         let user = await User.findOne({username: username});
+        let post = await Post.findOne({_id: postId});
         let postedBy = user._id;
 
 
@@ -24,6 +26,10 @@ async function createComment(req, res) {
             },
         });
         await newComment.save();
+
+        post.comments.push(newComment._id);
+        await post.save();
+        
         res.status(201).json({ message: "Comment created" });
     } catch (e) {
         console.log(e);
