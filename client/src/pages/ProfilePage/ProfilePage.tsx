@@ -42,7 +42,6 @@ export default function ProfilePage() {
     });
 } 
 );
-console.log(myPostsQuery.data?.data.length);
     const myTweets = (myPostsQuery.isLoading) ?  <h1>Loading...</h1> : myPostsQuery.data?.data.map((post:any) => {
         return (
             <PostCardComponent key={post._id} postid={post._id} avatar={post.postedByUserData[0].avatar} name={name} username={username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />

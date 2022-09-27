@@ -24,7 +24,7 @@ export default function MenusBar() {
 
 
   return (
-    <div className='flex flex-col h-[100vh]  border-r-2  justify-between md:pr-[2rem] sticky top-0 bottom-0'>
+    <div className='flex flex-col h-[100vh]  border-r-2  justify-between md:pr-[3rem] sticky top-0 bottom-0'>
       
       <div className='md:w-[12rem] w-[100%] md:p-3'> 
         <GrTwitter className="ml-1 w-[3rem] md:w-[3.5rem] h-[3.5rem] p-[6px] text-blue-500 text-4xl hover:bg-slate-200 rounded-full cursor-pointer" />
@@ -63,7 +63,7 @@ export default function MenusBar() {
         </NavLink>
 
         <Link to="/compose/tweet"> 
-        <button className='hidden md:block w-full rounded-3xl bg-blue-500 hover:bg-blue-600 text-2xl text-white h-[2.75rem] mt-3'>Tweet</button>
+        <button className='hidden md:block w-full md:w-[13rem] rounded-3xl bg-blue-500 hover:bg-blue-600 text-2xl text-white font-semibold h-[3.2rem] mt-3'>Tweet</button>
         <MdPostAdd className=" mt-6 ml-2  md:w-[3.5rem] md:hidden p-[6px] text-white text-4xl hover:bg-blue-600 rounded-full cursor-pointer bg-blue-500" />
 
         </Link>

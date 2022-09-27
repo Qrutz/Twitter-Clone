@@ -210,6 +210,25 @@ async function convertIDtoUser(req, res) {
 
 }
 
+// create async function to fetch all users except the current user and return them
+async function getAllUsers(req, res) {
+    const username = req.user.user.username;
+    try {
+        let users = await User.find({ username: { $ne: username } });
+        // filter password
+        let usersWithoutPassword = users.map((user) => {
+            const { password, ...userWithoutPassword } = user._doc;
+            return userWithoutPassword;
+
+        });
+        res.json(usersWithoutPassword);
+    }
+    catch (e) {
+        console.log(e);
+        res.status(500).json({ message: "Server error" });
+    }
+}
+
 
 
 
@@ -229,5 +248,6 @@ module.exports = {
     getUserProfile,
     doIfollowUser,
     convertIDtoUser,
+    getAllUsers
     
 };

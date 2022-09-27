@@ -101,6 +101,30 @@ getAllCommentsFromPost = async (req, res) => {
     }
 }
 
+async function likePost(req, res) {
+    const postId = req.params.postId;
+    const username = req.user.user.username;
+    try {
+        let user = await User.findOne({username: username});
+        let post = await Post.findById(postId);
+        let likes = post.likes;
+        let isLiked = likes.includes(user._id);
+        if (isLiked) {
+            await Post.findByIdAndUpdate(postId, {$pull: {likes: user._id}});
+            res.json({message: "Post unliked"});
+        } else {
+            await Post.findByIdAndUpdate(postId, {$push: {likes: user._id}});
+            res.json({message: "Post liked"});
+        }
+    } catch (e) {
+        console.log(e);
+
+        res.status(500).json({ message: "Server error" });
+    }
+}   
+
+
+
 
 
 

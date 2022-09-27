@@ -106,9 +106,25 @@ export const useMyData = () => useQuery(["currentUser"], getMyData);
 
 
 
- // refetch when myData changes
+export async function fetchUsers() {
+    const response = await axios.get(`${API_URL}/api/user/allUsers`, {
+        headers: {
+            "x-access-token": `${token}`
+        }
+    });
+
+ 
+
+    return response.data;
+    
+}
 
 
+// create a search mutation to search for users
+
+
+
+export const useUsers = () => useQuery(["allUsers"], fetchUsers);
 
     
 

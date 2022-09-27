@@ -140,8 +140,9 @@ export default function ProfileCard(props:any) {
     
      
       <div className='border-b-2'>
-    <div className="w-full bg-cover bg-no-repeat bg-center h-[200px] bg-slate-700"  > 
+    <div className="w-full object-fit bg-cover bg-no-repeat bg-center h-[200px] bg-slate-700 "  > 
        {/* IMAGE BANNER HERE */}
+      
     </div>
     <div className="p-4">
         <div className="relative flex w-full">
