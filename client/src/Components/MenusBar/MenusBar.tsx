@@ -41,7 +41,7 @@ export default function MenusBar() {
         <MenusTab title="Notifications" icon={FiBell} />
         </NavLink>
 
-        <NavLink to="/Messages/messages" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
+        <NavLink to="/messages" className={({isActive}) => isActive? "bg-slate-200 rounded-3xl font-bold" : "font-normal"}>
         <MenusTab title="Messages" icon={FiMail} />
         </NavLink>
 

@@ -36,7 +36,7 @@ export default function UserPage() {
 
     const userTweets = (postsQuery.isLoading) ? <div>Loading...</div> : postsQuery.data?.data.map((post: any) => {
         return (
-            <PostCardComponent postid={post._id} key={post._id} avatar={post.postedByUserData[0].avatar} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+            <PostCardComponent postid={post._id} key={post._id} avatar={post.postedByUserData[0].avatar} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
         )
     }
     );

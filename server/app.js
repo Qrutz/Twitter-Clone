@@ -9,6 +9,9 @@ const path = require('path');
 
 
 
+
+
+
 const app = express();
 
 app.use(express.json());
@@ -23,6 +26,9 @@ app.get('/welcome',verifyToken, (req, res) => {
     console.log('Hello World');
     res.send('Hello World');
 });
+
+
+
 
 app.use('/api/post', PostRouter);
 

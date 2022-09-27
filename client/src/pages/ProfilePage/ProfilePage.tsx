@@ -18,9 +18,9 @@ export default function ProfilePage() {
 
   
    const [toggle, setToggle] = React.useState(false);
-   const [nameEdit , setName] = React.useState("");
-   const [bioEdit , setBio] = React.useState("");
-   const [avatarEdit , setAvatar] = React.useState("");
+   const [nameEdit , setName] = React.useState(data.name? data.name : "");
+   const [bioEdit , setBio] = React.useState(data.bio? data.bio : "");
+   const [avatarEdit , setAvatar] = React.useState(data.avatar? data.avatar : "");
 
     const name = isLoading ? "" : data.name;
     const bio = isLoading ? "" : data.bio;
