@@ -12,9 +12,11 @@ import {  useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 
 
+
 export default function HomePage() {
   const queryClient = useQueryClient();
   const [value, setValue] = useState<any>("");
+
   
   
 
@@ -22,18 +24,18 @@ export default function HomePage() {
   
   
 
-  const {status, data} = useQuery(['posts'], async () => {
+  const {status, data, isLoading} = useQuery(['posts'], async () => {
     const token = localStorage.getItem("token");
     const res =  await axios.get(`${API_URL}/api/post/getFeed`, {
       headers: {
         "x-access-token": `${token}`
       }
     })
-    console.log(res.data);
     return res.data;
   },
   )
-  // refetch the posts when mutation is done
+  
+  
 
 
 
@@ -63,7 +65,7 @@ export default function HomePage() {
     })
   }
 
-
+  
 
 
 
@@ -74,14 +76,14 @@ export default function HomePage() {
  
   const tweets = (status === 'loading') ? <h1>Loading...</h1> : (status === 'error') ? <span>Error: </span> :  data.map((post: any) => {
     return (
-     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes} date={post.date} />
+     <PostCardComponent postid={post._id} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} avatar={post.postedByUserData[0].avatar} key={post._id} text={post.content} comments={post.comments} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
     )
     })
 
 
 
 
-
+   
 
   
   return (

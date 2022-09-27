@@ -108,17 +108,18 @@ async function likePost(req, res) {
         let user = await User.findOne({username: username});
         let post = await Post.findById(postId);
         let likes = post.likes;
-        let isLiked = likes.includes(user._id);
-        if (isLiked) {
-            await Post.findByIdAndUpdate(postId, {$pull: {likes: user._id}});
-            res.json({message: "Post unliked"});
-        } else {
+        if (!(likes.includes(user._id))) {
             await Post.findByIdAndUpdate(postId, {$push: {likes: user._id}});
             res.json({message: "Post liked"});
-        }
+
+    }
+        else {
+            await Post.findByIdAndUpdate(postId, {$pull: {likes: user._id}});
+            res.json({message: "Post unliked"});
+        }    
+
     } catch (e) {
         console.log(e);
-
         res.status(500).json({ message: "Server error" });
     }
 }   
@@ -130,7 +131,7 @@ async function likePost(req, res) {
 
 
 
-module.exports = { createPost, getMyPosts, getFeed, getUserPosts, fetchPost };
+module.exports = { createPost, getMyPosts, getFeed, getUserPosts, fetchPost, likePost };
 
 
 

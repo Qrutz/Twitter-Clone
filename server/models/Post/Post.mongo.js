@@ -18,18 +18,19 @@ const PostSchema = new mongoose.Schema({
     }],
     
     
-    likes: {
-        type: Number,
-        default: 0
-    },
-    comments: {
-        type: Number,
-        default: 0
-    },
-    retweets: {
-        type: Number,
-        default: 0
-    },
+    likes: [{
+        type: mongoose.Types.ObjectId, ref: "User",
+        default: [],
+    }],
+    comments: [{
+        type: mongoose.Types.ObjectId, ref: "Comment",
+        default: [],
+        
+    }],
+    retweets: [{
+        type: mongoose.Types.ObjectId, ref: "User",
+        default: [],
+    }],
     date: {
         type: Date,
         // format date to be like this: 2021-01-01

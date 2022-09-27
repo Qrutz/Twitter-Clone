@@ -4,7 +4,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import MenusBar from '../../Components/MenusBar/MenusBar';
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
-import { API_URL, createComment, useMyData } from '../../requests';
+import { API_URL, createComment, likePost, useMyData } from '../../requests';
 import {AiOutlineArrowLeft, AiOutlineRetweet, AiOutlineHeart} from "react-icons/ai";
 import {FiShare} from "react-icons/fi";
 import {FaRegComment} from "react-icons/fa";
@@ -44,6 +44,26 @@ export default function ClickOnPostPage() {
         }
     })
 
+    // create a like mutation 
+    const likeMutation = useMutation(() => likePost(id), {
+        onSuccess: () => {
+            TweetQuery.refetch();
+        }
+    })
+
+
+    // create a handlelike function which will call the like mutation
+    const handleLike = () => {
+        likeMutation.mutate();
+    }
+
+
+
+   
+
+
+
+
     
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,6 +80,8 @@ export default function ClickOnPostPage() {
 
 
     }
+
+
 
 
 
@@ -158,7 +180,7 @@ export default function ClickOnPostPage() {
         <div className='flex border-b'>
         <div className='flex gap-4 items-center p-3 '>
         <h1 className='text-lg '> <span className='font-bold'>{TweetQuery.data.retweets} </span> Retweets</h1>
-        <h1 className='text-lg'> <span className='font-bold'> {TweetQuery.data.likes} </span> Likes</h1>  
+        <h1 className='text-lg'> <span className='font-bold'> {TweetQuery.data.likes?.length} </span> Likes</h1>  
         </div>
         </div>
 
@@ -168,7 +190,7 @@ export default function ClickOnPostPage() {
         <div className='flex justify-around  items-center p-3 border-b'>
         <FaRegComment className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
         <AiOutlineRetweet className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
-        <AiOutlineHeart className='transition  delay-75 hover:text-red-600 duration-300   text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
+        <AiOutlineHeart onClick={() => likeMutation.mutate()} className='transition  delay-75 hover:text-red-600 duration-300   text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
         <FiShare className='transition  delay-75 duration-300 text-gray-500 ml-1 md:w-[2.5rem] md:h-[2.5rem]  p-[8px]  text-2xl hover:bg-slate-200 rounded-full cursor-pointer w-[2rem] h-[2rem]' />
 
         </div>

@@ -131,5 +131,18 @@ export const useUsers = () => useQuery(["allUsers"], fetchUsers);
 
 
 
+export async function likePost(id:any) {
+    try {
+        const response = await axios.put(`${API_URL}/api/post/likePost/${id}`,{
+        },
+        {
+            headers: {
+                "x-access-token": `${token}` 
+                }
+                });
 
-//export default createPost;
+        return response.data;
+    } catch (e) {
+        console.log(e);
+    }   
+}
