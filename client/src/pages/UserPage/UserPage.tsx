@@ -30,30 +30,18 @@ export default function UserPage() {
 
 
 
-    
-    const userProfile = (userQuery.isLoading) ? <div>Loading...</div> : <ProfileCard name={userQuery.data?.data.name} username={userQuery.data?.data.username} avatar={userQuery.data?.data.avatar} bio={userQuery.data?.data.bio} website={userQuery.data?.data.website} following={userQuery.data?.data.following.length} followers={userQuery.data?.data.followers.length} joined={"December, 2022"} />;
-
-
-    const userTweets = (postsQuery.isLoading) ? <div>Loading...</div> : postsQuery.data?.data.map((post: any) => {
-        return (
-            <PostCardComponent postid={post._id} key={post._id} avatar={post.postedByUserData[0].avatar} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
-        )
-    }
-    );
-
-   
-
-
-
   return (
     
     <div className='container mx-auto flex  '> 
     <MenusBar />
     <div className='flex flex-col  w-full  '>
-        {userProfile}
-        {userTweets}
-        {/* fetch users posts */}
-        {/* <PostCardComponent name={name} username={uname} text='myPost' comments={9} retweets={0} likes={2} date="2022-01-2" /> */}
+    <ProfileCard myProfile={false} name={userQuery.data?.data.name} username={userQuery.data?.data.username} avatar={userQuery.data?.data.avatar} bio={userQuery.data?.data.bio} website={userQuery.data?.data.website} following={userQuery.data?.data.following.length} followers={userQuery.data?.data.followers.length} joined={"December, 2022"} />
+    {postsQuery.data?.data.map((post: any) => {
+        return (
+            <PostCardComponent postid={post._id} key={post._id} avatar={post.postedByUserData[0].avatar} name={post.postedByUserData[0].name} username={post.postedByUserData[0].username} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
+        )
+    }
+    )}
     </div>
     <TrendingForYouBar />
     </div>

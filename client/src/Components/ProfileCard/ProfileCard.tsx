@@ -9,42 +9,18 @@ import { API_URL, useMyData } from '../../requests';
 
 
 export default function ProfileCard(props:any) {
-    const [myProfile, setMyProfile] = useState(false);
+    const [myProfile, setMyProfile] = useState(props.myProfile);
     const [following, setFollowing] = useState(false);
 
     const {data, isLoading} = useMyData();
-    
-
     const { username } = useParams();
 
-    
-
-    
-
-
     const token = localStorage.getItem("token");
-
-  
-
-   
-
-
-    const uname = isLoading ? "" : data.username;
-
-    useEffect(() => {
-        if ((uname === username) || (username === undefined)) {
-            setMyProfile(true);
-        } else {
-            setMyProfile(false);
-        }
-    }, [username, uname])
 
     useEffect(() => {
         if (username===undefined) {
             return;
         }   
-
-
         axios.get(`${API_URL}/api/user/doIfollowUser/${username}`, 
             {
                 headers: {  
@@ -62,10 +38,15 @@ export default function ProfileCard(props:any) {
                 console.log(err);
             })
     }, [username, token])
+
+  
+
+
+
  
 
     async function followUser() {
-        axios.put(`${API_URL}/api/user/follow/${username}`, {},
+        axios.put(`${API_URL}/api/user/follow/${username}`, {}, 
             {
                 headers: {
                     "x-access-token": `${token}`

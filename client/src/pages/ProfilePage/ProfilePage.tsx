@@ -22,12 +22,7 @@ export default function ProfilePage() {
    const [bioEdit , setBio] = React.useState(data.bio? data.bio : "");
    const [avatarEdit , setAvatar] = React.useState(data.avatar? data.avatar : "");
 
-    const name = isLoading ? "" : data.name;
-    const bio = isLoading ? "" : data.bio;
-    const avatar = isLoading ? "" : data.avatar;
-    const username = isLoading ? "" : data.username;
-    const followers = isLoading ? 0 : data.followers.length;
-    const following = isLoading ? 0 : data.following.length;
+  
     
    
    
@@ -44,7 +39,7 @@ export default function ProfilePage() {
 );
     const myTweets = (myPostsQuery.isLoading) ?  <h1>Loading...</h1> : myPostsQuery.data?.data.map((post:any) => {
         return (
-            <PostCardComponent key={post._id} postid={post._id} avatar={post.postedByUserData[0].avatar} name={name} username={username} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
+            <PostCardComponent key={post._id} postid={post._id} avatar={post.postedByUserData[0].avatar} name={data?.name} username={data?.username} text={post.content} comments={post.comments?.length} retweets={post.retweets} likes={post.likes?.length} date={post.date} />
         )
     });
 
@@ -83,7 +78,7 @@ export default function ProfilePage() {
     
   return (
     <>
-   {toggle? <EditProfileModal handleSaveChanges={handleSubmit} nameVal={nameEdit} onChangeName={(e:any) => setName(e.target.value)} onChangeBio={(e:any) => setBio(e.target.value)} onChangeAvatarVAL={(e:any) => setAvatar(e.target.value)} bioVal={bioEdit} avatarVal={avatarEdit} avatar={avatar} name={name} bio={bio} handleExit={() => setToggle(false)} /> : null}
+   {toggle? <EditProfileModal handleSaveChanges={handleSubmit} nameVal={nameEdit} onChangeName={(e:any) => setName(e.target.value)} onChangeBio={(e:any) => setBio(e.target.value)} onChangeAvatarVAL={(e:any) => setAvatar(e.target.value)} bioVal={bioEdit} avatarVal={avatarEdit} avatar={data?.avatar} name={data?.name} bio={data?.bio} handleExit={() => setToggle(false)} /> : null}
     <div className={toggle ?  'container mx-auto flex opacity-50 pointer-events-none  ' : 'container mx-auto flex '  }> 
 
     
@@ -99,13 +94,13 @@ export default function ProfilePage() {
     </Link>
     </div>
     <div className='flex flex-col '>
-    <h1 className='text-2xl font-semibold'>{name}</h1>
+    <h1 className='text-2xl font-semibold'>{data?.name}</h1>
     <p>{myPostsQuery.data?.data.length} Tweets </p>
     </div>
     </div>
   
-        <ProfileCard handleOnEdit={() => setToggle(!toggle)} name={name} username={username} avatar={avatar} 
-        bio={bio} website='' following={following} followers={followers} joined="December, 2022" />
+        <ProfileCard myProfile={true} handleOnEdit={() => setToggle(!toggle)} name={data?.name} username={data?.username} avatar={data?.avatar} 
+        bio={data?.bio} website='' following={data?.following.length} followers={data?.followers.length} joined="December, 2022" />
            
         
         
