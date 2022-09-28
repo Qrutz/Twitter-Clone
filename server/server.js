@@ -23,15 +23,35 @@ const io = new Server(server, {
 
 
 
+let users = [];
+
+const addUser = (userId, socketId) => {
+    !users.some((user) => user.userId === userId) &&
+        users.push({ userId, socketId });
+};
+
 io.of("/messages").on('connection', (socket) => {
     console.log('a user connected');
+
+
+    socket.on("addUser", (data) => {
+        addUser(data, socket.id);
+        io.of("/messages").emit("getUsers", users);
+    })
+
+
+
+
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
-    socket.on('chat message', (msg) => {
-        console.log("message:" + msg);
-    })
+    
 });
+
+
+
+
+
 
 
 

@@ -14,13 +14,7 @@ import { useMyData } from '../../requests';
 export default function MenusBar() {
 
  
-  const {data, isLoading} = useMyData();
-
-  const name = isLoading ? "loading" : data?.name;
-  const username = isLoading ? "loading" : data?.username;
-  const avatar = isLoading ? "loading" : data?.avatar;
-
-    
+  const {data} = useMyData();
 
 
   return (
@@ -73,21 +67,13 @@ export default function MenusBar() {
 
 
         <div className='     md:h-12 rounded-full border border-lighter   text-center font-extralight '>
-                <img className='w-12 h-12 rounded-full' src={avatar} alt="" />
+                <img className='w-12 h-12 rounded-full' src={data?.avatar} alt="" />
                 </div>
           <div className='flex flex-col ml-2 '>
-            <p className='hidden md:block text-lg font-bold text-gray-800'>{name ? name : ""}</p>
-            <span className='hidden md:block text-xs text-gray-600'>@{username}</span>
+            <p className='hidden md:block text-lg font-bold text-gray-800'>{data?.name}</p>
+            <span className='hidden md:block text-xs text-gray-600'>@{data?.username}</span>
           </div>
-
-          
-
-          
-
-          
            </div>
-
-        
     </div>
   )
 }

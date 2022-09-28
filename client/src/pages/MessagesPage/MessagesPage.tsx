@@ -1,30 +1,36 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import MenusBar from '../../Components/MenusBar/MenusBar'
 import TrendingForYouBar from '../../Components/TrendingForYouBar/TrendingForYouBar';
 import {io} from 'socket.io-client';
 import {GiOldMicrophone} from 'react-icons/gi';
 import {AiOutlineSend} from 'react-icons/ai';
+import {useMyData} from "../../requests";
 
 
-const socket = io("http://localhost:5000/messages");
+
 export default function MessagesPage() {
+   const socket = useRef(io("http://localhost:5000/messages"));
     const [value, setValue] = React.useState("");
     const [isConnected, setIsConnected] = React.useState("");
-    
+   
+
+    const {data, isLoading } = useMyData();
+
+
 
     
-
-   // socket on chat message, emit chat message  
+      
   
 
-   
+    
+
 
     
 
     const handleSubmit = (e: any) => { 
         console.log(value);
         e.preventDefault();
-        socket.emit('chat message', value);
+        socket.current.emit('chat message', value);
         setValue("");
     }
 
