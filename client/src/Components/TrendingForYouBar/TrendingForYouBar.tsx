@@ -1,10 +1,16 @@
 import React from 'react';
+import { trendingHashtags } from './examplehashs';
 import SearchUsersComponent from './SearchUsersComponent';
 import TrendingCard from './TrendingCard';
 
 export default function TrendingForYouBar() {
+    const [useHashtags, setUseHashtags] = React.useState(trendingHashtags);
+
+
+    
+
   return (
-    <div className='border-l-2  flex-col p-3 w-[30%] hidden md:flex'>
+    <div className='pt-2 gap-4 flex-col pl-6 w-[30%] hidden md:flex '>
         
         <form className="flex items-center">   
     <label  className="sr-only">Search</label>
@@ -17,16 +23,11 @@ export default function TrendingForYouBar() {
     
 </form>
 
-        <div className='flex flex-col bg-slate-200 rounded-2xl mt-3 gap-2'>
+        <div className='flex flex-col bg-slate-100 rounded-2xl border-2   gap-2 p-l-2'>
             <h1 className='mb-3 flex px-5 py-3 text-2xl font-bold text-gray-900'>Trends for you</h1>
-         
-            <TrendingCard />
-            <TrendingCard />
-            <TrendingCard />
-            <TrendingCard />
-            <TrendingCard />
-            <TrendingCard />
-            <TrendingCard />
+            {  useHashtags.map((hashtag) => (
+                <TrendingCard hashtag={hashtag.hashtag} tweets={hashtag.tweets} />
+            ))}
           
             
 

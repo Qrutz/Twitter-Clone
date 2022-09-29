@@ -85,7 +85,7 @@ export default function ProfilePage() {
     
     <MenusBar />
     
-    <div className='flex flex-col  w-full scroll-smooth '>
+    <div className='flex flex-col  w-full scroll-smooth border-x-2'>
     <div className='flex gap-6  items-center border-b-2 p-3 h-[4rem] bg-white sticky top-0 bottom-0 z-40 '>
           
           <div>        

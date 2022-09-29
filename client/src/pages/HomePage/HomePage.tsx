@@ -90,7 +90,7 @@ export default function HomePage() {
     
       <div className='container mx-auto flex bg-white  '>
     <MenusBar />
-    <div className='flex flex-col h-full w-full'>
+    <div className='flex flex-col h-full w-full border-r-2 border-l-2'>
       <TweetHomeComponent changeText={onChange} text={value} tweet={handleSubmit} />
      {tweets}
     </div>

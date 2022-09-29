@@ -4,7 +4,7 @@ const PostRouter = require('./routes/Post.router');
 const CommentsRouter = require('./routes/Comments.router');
 const {verifyToken} = require('./middleware/auth');
 const cors = require('cors');
-const path = require('path');
+
 
 
 

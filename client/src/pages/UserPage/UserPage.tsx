@@ -34,7 +34,7 @@ export default function UserPage() {
     
     <div className='container mx-auto flex  '> 
     <MenusBar />
-    <div className='flex flex-col  w-full  '>
+    <div className='flex flex-col  w-full border-x-2  '>
     <ProfileCard myProfile={false} name={userQuery.data?.data.name} username={userQuery.data?.data.username} avatar={userQuery.data?.data.avatar} bio={userQuery.data?.data.bio} website={userQuery.data?.data.website} following={userQuery.data?.data.following.length} followers={userQuery.data?.data.followers.length} joined={"December, 2022"} />
     {postsQuery.data?.data.map((post: any) => {
         return (

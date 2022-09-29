@@ -41,7 +41,7 @@ export default function MessagesPage() {
   return (
     <div className='container mx-auto flex bg-white'>
         <MenusBar />
-        <form onSubmit={handleSubmit} className="p:2 p-6 justify-between flex flex-col h-screen w-full">
+        <form onSubmit={handleSubmit} className="p:2 p-6 justify-between flex flex-col h-screen w-full border-x-2">
    <div className="flex sm:items-center justify-between py-3 border-b-2 border-gray-200">
       <div className="relative flex items-center space-x-4 ml-2 md:ml-0">
          <div className="relative">

@@ -23,30 +23,30 @@ const io = new Server(server, {
 
 
 
-let users = [];
+// let users = [];
 
-const addUser = (userId, socketId) => {
-    !users.some((user) => user.userId === userId) &&
-        users.push({ userId, socketId });
-};
+// const addUser = (userId, socketId) => {
+//     !users.some((user) => user.userId === userId) &&
+//         users.push({ userId, socketId });
+// };
 
-io.of("/messages").on('connection', (socket) => {
-    console.log('a user connected');
-
-
-    socket.on("addUser", (data) => {
-        addUser(data, socket.id);
-        io.of("/messages").emit("getUsers", users);
-    })
+// io.of("/messages").on('connection', (socket) => {
+//     console.log('a user connected');
 
 
+//     socket.on("addUser", (data) => {
+//         addUser(data, socket.id);
+//         io.of("/messages").emit("getUsers", users);
+//     })
 
 
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-    });
+
+
+//     socket.on('disconnect', () => {
+//         console.log('user disconnected');
+//     });
     
-});
+// });
 
 
 
