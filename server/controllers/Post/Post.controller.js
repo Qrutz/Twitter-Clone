@@ -116,6 +116,7 @@ async function likePost(req, res) {
         else {
             await Post.findByIdAndUpdate(postId, {$pull: {likes: user._id}});
             res.json({message: "Post unliked"});
+            //gg
         }    
 
     } catch (e) {
